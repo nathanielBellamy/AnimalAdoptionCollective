@@ -14,6 +14,13 @@ public class Adoption {
   private UUID uuid;
   private LocalDate dateOfAdoption;
 
+  public Adoption() {}
+
+  public Adoption(LocalDate dateOfAdoption) {
+    this.dateOfAdoption = dateOfAdoption;
+  }
+
+
   public UUID getUuid() {
     return uuid;
   }
