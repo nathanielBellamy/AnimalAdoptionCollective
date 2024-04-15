@@ -1,11 +1,12 @@
 package dev.nateschieber.animaladoptioncollective.controllers;
 
-import dev.nateschieber.animaladoptioncollective.RestDtos.CreateAdoptionDto;
+import dev.nateschieber.animaladoptioncollective.RestDtos.AdoptionCreateDto;
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
-import dev.nateschieber.animaladoptioncollective.repositories.AdoptionDatabaseRepository;
+import dev.nateschieber.animaladoptioncollective.repositories.AdoptionRepository;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("adoptions")
 public class AdoptionController {
 
-  private final AdoptionDatabaseRepository adoptionRepository;
+  private final AdoptionRepository adoptionRepository;
 
   @Autowired
-  public AdoptionController(AdoptionDatabaseRepository adoptionRepository) {
+  public AdoptionController(AdoptionRepository adoptionRepository) {
     this.adoptionRepository = adoptionRepository;
   }
 
@@ -41,9 +42,19 @@ public class AdoptionController {
 
   @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  public ResponseEntity createAdoption(@RequestBody CreateAdoptionDto dto) {
+  public ResponseEntity createAdoption(@RequestBody AdoptionCreateDto dto) {
     Adoption adoption = new Adoption(dto.getDateOfAdoption());
     Adoption adoptionSaved = adoptionRepository.save(adoption);
-    return ResponseEntity.ok().body(adoptionSaved);
+    if (adoptionSaved == null) {
+      return ResponseEntity.internalServerError().build();
+    }
+
+    URI uri;
+    try {
+      uri = new URI("/adoptions/" + adoptionSaved.getId());
+    } catch (URISyntaxException e) {
+      uri = null;
+    }
+    return ResponseEntity.created(uri).body(adoptionSaved);
   }
 }

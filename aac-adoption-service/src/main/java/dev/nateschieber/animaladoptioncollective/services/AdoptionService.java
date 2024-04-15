@@ -1,16 +1,16 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
-import dev.nateschieber.animaladoptioncollective.repositories.AdoptionDatabaseRepository;
+import dev.nateschieber.animaladoptioncollective.repositories.AdoptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AdoptionService {
 
-  private final AdoptionDatabaseRepository adoptionRepository;
+  private final AdoptionRepository adoptionRepository;
 
   @Autowired
-  public AdoptionService(AdoptionDatabaseRepository adoptionRepository) {
+  public AdoptionService(AdoptionRepository adoptionRepository) {
     this.adoptionRepository = adoptionRepository;
   }
 

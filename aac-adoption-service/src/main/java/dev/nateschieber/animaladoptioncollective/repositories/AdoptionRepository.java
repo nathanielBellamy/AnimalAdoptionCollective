@@ -3,4 +3,4 @@ package dev.nateschieber.animaladoptioncollective.repositories;
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AdoptionDatabaseRepository extends JpaRepository<Adoption, Long> {}
+public interface AdoptionRepository extends JpaRepository<Adoption, Long> {}

@@ -2,7 +2,7 @@ package dev.nateschieber.animaladoptioncollective.RestDtos;
 
 import java.time.LocalDate;
 
-public record CreateAdoptionDto(LocalDate dateOfAdoption){
+public record AdoptionCreateDto(LocalDate dateOfAdoption){
 
   public LocalDate getDateOfAdoption() {
     return dateOfAdoption;
