@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @Configuration
-public class AacAdoptionService {
+public class AacAdoptionServiceApplication {
 
   private static RepositoryLocation repositoryLocation = RepositoryLocation.DATABASE;
 
@@ -17,6 +17,6 @@ public class AacAdoptionService {
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(AacAdoptionService.class, args);
+    SpringApplication.run(AacAdoptionServiceApplication.class, args);
   }
 }

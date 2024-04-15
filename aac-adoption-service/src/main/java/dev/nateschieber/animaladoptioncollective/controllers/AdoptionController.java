@@ -1,10 +1,13 @@
 package dev.nateschieber.animaladoptioncollective.controllers;
 
-import dev.nateschieber.animaladoptioncollective.RestDtos.AdoptionCreateDto;
+import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.AdoptionCreateDto;
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
-import dev.nateschieber.animaladoptioncollective.repositories.AdoptionRepository;
+import dev.nateschieber.animaladoptioncollective.rest.responses.adoption.AdoptionEntityResponse;
+import dev.nateschieber.animaladoptioncollective.rest.responses.adoption.AdoptionGetAllResponse;
+import dev.nateschieber.animaladoptioncollective.services.AdoptionService;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,23 +21,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("adoptions")
+@RequestMapping("api/v1/adoptions")
 public class AdoptionController {
 
-  private final AdoptionRepository adoptionRepository;
+  private final AdoptionService adoptionService;
+//  private final AdoptionRepository adoptionService;
 
   @Autowired
-  public AdoptionController(AdoptionRepository adoptionRepository) {
-    this.adoptionRepository = adoptionRepository;
+  public AdoptionController(AdoptionService adoptionService) {
+    this.adoptionService = adoptionService;
+  }
+
+  @GetMapping("")
+  @ResponseBody
+  public ResponseEntity getAll() {
+    List<Adoption> adoptions = adoptionService.findAll();
+    return ResponseEntity.ok().body(new AdoptionGetAllResponse(adoptions));
   }
 
   @GetMapping("/{id}")
   @ResponseBody
   public ResponseEntity getById(@PathVariable Long id) {
-    Optional<Adoption> adoption = adoptionRepository.findById(id);
-    System.out.println(adoption);
+    Optional<Adoption> adoption = adoptionService.findById(id);
     if (adoption.isPresent()) {
-      return ResponseEntity.ok().body(adoption.get());
+      return ResponseEntity.ok().body(new AdoptionEntityResponse(adoption.get()));
     } else {
       return ResponseEntity.notFound().build();
     }
@@ -44,7 +54,7 @@ public class AdoptionController {
   @ResponseBody
   public ResponseEntity createAdoption(@RequestBody AdoptionCreateDto dto) {
     Adoption adoption = new Adoption(dto.getDateOfAdoption());
-    Adoption adoptionSaved = adoptionRepository.save(adoption);
+    Adoption adoptionSaved = adoptionService.save(adoption);
     if (adoptionSaved == null) {
       return ResponseEntity.internalServerError().build();
     }
@@ -55,6 +65,6 @@ public class AdoptionController {
     } catch (URISyntaxException e) {
       uri = null;
     }
-    return ResponseEntity.created(uri).body(adoptionSaved);
+    return ResponseEntity.created(uri).body(new AdoptionEntityResponse(adoptionSaved));
   }
 }
