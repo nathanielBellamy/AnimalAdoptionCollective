@@ -8,6 +8,7 @@ import dev.nateschieber.animaladoptioncollective.rest.responses.event.EventGetAl
 import dev.nateschieber.animaladoptioncollective.services.EventService;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class EventController {
 
   @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  public ResponseEntity createEvent(@RequestBody EventCreateDto dto) {
+  public ResponseEntity createEvent(@RequestBody EventDto dto, @RequestBody LocalDateTime at) {
     Event event = new Event(dto.getAt());
     Event eventSaved = eventService.save(event);
     if (eventSaved == null) {
