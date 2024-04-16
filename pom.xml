@@ -21,5 +21,6 @@
 	<modules>
 		<module>aac-adoption-service</module>
 		<module>aac-common</module>
+		<module>aac-event-service</module>
 	</modules>
 </project>
