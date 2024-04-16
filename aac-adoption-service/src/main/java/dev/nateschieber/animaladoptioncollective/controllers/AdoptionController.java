@@ -10,6 +10,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +46,10 @@ public class AdoptionController {
   public ResponseEntity getById(@PathVariable Long id) {
     Optional<Adoption> adoption = adoptionService.findById(id);
     if (adoption.isPresent()) {
-      return ResponseEntity.ok().body(new AdoptionEntityResponse(adoption.get()));
+      ResponseEntity<AdoptionEntityResponse> resEnt = new ResponseEntity<>(
+          new AdoptionEntityResponse(adoption.get()),
+          HttpStatus.OK);
+      return resEnt;
     } else {
       return ResponseEntity.notFound().build();
     }
