@@ -18,6 +18,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>dev.nateschieber</groupId>
+            <artifactId>aac-common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
