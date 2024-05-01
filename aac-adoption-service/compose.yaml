@@ -1,3 +1,4 @@
+name: 'aac-adoption-service'
 services:
   postgres:
     image: 'postgres:latest'
