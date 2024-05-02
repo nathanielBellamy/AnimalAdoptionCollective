@@ -1,14 +1,12 @@
 package dev.nateschieber.animaladoptioncollective.controllers;
 
 import dev.nateschieber.animaladoptioncollective.rest.dtos.event.EventCreateDto;
-import dev.nateschieber.animaladoptioncollective.rest.dtos.event.EventCreateDto;
 import dev.nateschieber.animaladoptioncollective.entities.Event;
 import dev.nateschieber.animaladoptioncollective.rest.responses.event.EventEntityResponse;
 import dev.nateschieber.animaladoptioncollective.rest.responses.event.EventGetAllResponse;
 import dev.nateschieber.animaladoptioncollective.services.EventService;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class EventController {
 
   private final EventService eventService;
-//  private final EventRepository eventService;
 
   @Autowired
   public EventController(EventService eventService) {
@@ -46,19 +43,19 @@ public class EventController {
   @ResponseBody
   public ResponseEntity getById(@PathVariable Long id) {
     Optional<Event> event = eventService.findById(id);
-    if (event.isPresent()) {
+    if (!event.isPresent()) {
+      return ResponseEntity.notFound().build();
+    } else {
       ResponseEntity<EventEntityResponse> resEnt = new ResponseEntity<>(
           new EventEntityResponse(event.get()),
           HttpStatus.OK);
       return resEnt;
-    } else {
-      return ResponseEntity.notFound().build();
     }
   }
 
   @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  public ResponseEntity createEvent(@RequestBody EventCreateDto dto, @RequestBody LocalDateTime at) {
+  public ResponseEntity createEvent(@RequestBody EventCreateDto dto) {
     Event event = new Event(dto.at());
     Event eventSaved = eventService.save(event);
     if (eventSaved == null) {

@@ -4,10 +4,7 @@ import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import dev.nateschieber.animaladoptioncollective.events.AacEvent;
 import dev.nateschieber.animaladoptioncollective.events.adoption.AdoptionCreateEvent;
 import dev.nateschieber.animaladoptioncollective.repositories.AdoptionRepository;
-import dev.nateschieber.animaladoptioncollective.rest.dtos.EventDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.AdoptionCreateDto;
-import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.AdoptionDto;
-import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.AdoptionEntityDto;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +33,15 @@ public class AdoptionService {
   public Adoption save(Adoption adoption) {
     Adoption savedAdoption = this.adoptionRepository.save(adoption);
 
-    EventDto dto = new AdoptionEntityDto(savedAdoption);
-    AacEvent event = new AdoptionCreateEvent(dto);
+    AacEvent event = new AdoptionCreateEvent(savedAdoption);
     this.eventService.postEvent(event);
 
     return savedAdoption;
+  }
+
+  public Adoption createFromDto(AdoptionCreateDto dto) {
+    Adoption adoption = new Adoption(dto);
+    return this.save(adoption);
   }
 
   public void printRepo() {

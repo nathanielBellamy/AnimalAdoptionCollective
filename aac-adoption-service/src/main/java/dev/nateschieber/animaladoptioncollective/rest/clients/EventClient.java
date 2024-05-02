@@ -1,8 +1,9 @@
-package dev.nateschieber.animaladoptioncollective.repositories;
+package dev.nateschieber.animaladoptioncollective.rest.clients;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dev.nateschieber.animaladoptioncollective.events.AacEvent;
 import java.io.IOException;
 import java.net.URI;
@@ -10,22 +11,27 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Repository
-public class EventRepository {
+@Component
+public class EventClient {
   public static URI uri ;
+  private static ObjectMapper objectMapper;
 
   static {
     try {
-      uri = new URI("https", "localhost:5173", "/api/v1/events");
+      uri = new URI("http://localhost:5173/api/v1/events/create");
     } catch (URISyntaxException e) {
       uri = null;
     }
+
+    ObjectMapper om = new ObjectMapper();
+    om.registerModule(new JavaTimeModule());
+    objectMapper = om;
   }
 
-  public void postEvent(AacEvent event) throws IOException{
-    ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+  public boolean postEvent(AacEvent event) {
+    ObjectWriter ow = objectMapper.writer();
     String jsonStr;
     try {
       jsonStr = ow.writeValueAsString(event);
@@ -39,10 +45,11 @@ public class EventRepository {
         .build();
 
     try {
-      HttpClient.newHttpClient()
+      HttpResponse response = HttpClient.newHttpClient()
           .send(request, HttpResponse.BodyHandlers.ofString());
-    } catch (InterruptedException e){
-      // TODO
+      return response.statusCode() == 200 ? true : false;
+    } catch (Exception e){
+      return false;
     }
   }
 }

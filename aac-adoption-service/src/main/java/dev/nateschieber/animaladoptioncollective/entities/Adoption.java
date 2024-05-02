@@ -1,5 +1,6 @@
 package dev.nateschieber.animaladoptioncollective.entities;
 
+import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.AdoptionCreateDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.AdoptionDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,9 +22,9 @@ public class Adoption {
 
   public Adoption() {}
 
-  public Adoption(LocalDate dateOfAdoption) {
+  public Adoption(AdoptionCreateDto dto) {
     this.uuid = UUID.randomUUID();
-    this.dateOfAdoption = dateOfAdoption;
+    this.dateOfAdoption = dto.dateOfAdoption();
   }
 
   public long getId() {

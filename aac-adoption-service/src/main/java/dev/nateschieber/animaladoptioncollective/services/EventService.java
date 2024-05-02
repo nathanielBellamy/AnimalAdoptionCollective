@@ -1,7 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
 import dev.nateschieber.animaladoptioncollective.events.AacEvent;
-import dev.nateschieber.animaladoptioncollective.repositories.EventRepository;
+import dev.nateschieber.animaladoptioncollective.rest.clients.EventClient;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,18 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventService {
 
-  private EventRepository eventRepository;
+  private EventClient eventClient;
 
   @Autowired
-  public EventService(EventRepository eventRepository) {
-    this.eventRepository = eventRepository;
+  public EventService(EventClient eventClient) {
+    this.eventClient = eventClient;
   }
 
   public void postEvent(AacEvent event) {
-    try {
-      this.eventRepository.postEvent(event);
-    } catch (IOException e) {
-      // TODO: log e
-    }
+      this.eventClient.postEvent(event);
   }
 }
