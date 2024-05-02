@@ -56,7 +56,7 @@ public class EventController {
   @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   public ResponseEntity createEvent(@RequestBody EventCreateDto dto) {
-    Event event = new Event(dto.at());
+    Event event = new Event(dto);
     Event eventSaved = eventService.save(event);
     if (eventSaved == null) {
       return ResponseEntity.internalServerError().build();

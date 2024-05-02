@@ -1,5 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.entities;
 
+import dev.nateschieber.animaladoptioncollective.enums.EventType;
+import dev.nateschieber.animaladoptioncollective.rest.dtos.event.EventCreateDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,12 +20,17 @@ public class Event {
 
   private UUID uuid;
   private LocalDateTime at;
+  private EventType eventType;
+  // TODO: save as jsonb
+  private String data;
 
   public Event() {}
 
-  public Event(LocalDateTime at) {
+  public Event(EventCreateDto dto) {
     this.uuid = UUID.randomUUID();
-    this.at = at;
+    this.eventType = dto.eventType();
+    this.at = dto.at();
+    this.data = dto.data();
   }
 
   public long getId() {
@@ -36,6 +43,18 @@ public class Event {
 
   public LocalDateTime getAt() {
     return at;
+  }
+
+  public String getData() {
+    return data;
+  }
+
+  public void setData(final String data) {
+    this.data = data;
+  }
+
+  public EventType getEventType() {
+    return eventType;
   }
 
   @Override

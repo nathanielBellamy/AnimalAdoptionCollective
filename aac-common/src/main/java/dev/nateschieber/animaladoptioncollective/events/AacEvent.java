@@ -1,13 +1,12 @@
 package dev.nateschieber.animaladoptioncollective.events;
 
 import dev.nateschieber.animaladoptioncollective.enums.EventType;
-import dev.nateschieber.animaladoptioncollective.rest.dtos.EventDto;
 import java.time.LocalDateTime;
 
 public abstract class AacEvent {
 
   private LocalDateTime at;
-  private EventDto eventDto;
+  private String data;
   private EventType eventType;
 
   public AacEvent() {
@@ -22,12 +21,12 @@ public abstract class AacEvent {
     this.at = at;
   }
 
-  public EventDto getEventDto() {
-    return eventDto;
+  public String getData() {
+    return data;
   }
 
-  public void setEventDto(EventDto eventDto) {
-    this.eventDto = eventDto;
+  public void setData(String data) {
+    this.data = data;
   }
 
   public EventType getEventType() {

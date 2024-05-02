@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dev.nateschieber.animaladoptioncollective.events.AacEvent;
+import dev.nateschieber.animaladoptioncollective.events.adoption.AdoptionCreateEvent;
+import dev.nateschieber.animaladoptioncollective.util.AacAdoptionSerializer;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -16,7 +18,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventClient {
   public static URI uri ;
-  private static ObjectMapper objectMapper;
 
   static {
     try {
@@ -24,21 +25,19 @@ public class EventClient {
     } catch (URISyntaxException e) {
       uri = null;
     }
-
-    ObjectMapper om = new ObjectMapper();
-    om.registerModule(new JavaTimeModule());
-    objectMapper = om;
   }
 
-  public boolean postEvent(AacEvent event) {
-    ObjectWriter ow = objectMapper.writer();
+  public boolean postEvent(AdoptionCreateEvent event) {
     String jsonStr;
     try {
-      jsonStr = ow.writeValueAsString(event);
+      jsonStr = AacAdoptionSerializer.getWriter().writeValueAsString(event);
     } catch (JsonProcessingException e) {
       jsonStr = "";
     }
+    return postEvent(jsonStr);
+  }
 
+  public boolean postEvent(String jsonStr) {
     HttpRequest request = HttpRequest.newBuilder(uri)
         .header("Content-Type", "application/json")
         .POST(HttpRequest.BodyPublishers.ofString(jsonStr))

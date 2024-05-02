@@ -44,11 +44,11 @@ public class EventControllerTest {
   @DisplayName("EventController#GET /api/v1/events - FindsAll")
   void EventController_GetAllEvents_ReturnsListOfEvent () throws Exception {
     List<Event> mockEvents = List.of(
-        new Event(LocalDateTime.of(100, 1, 1, 1, 1, 1)),
-        new Event(LocalDateTime.of(1000, 1, 1, 1, 1, 1)),
-        new Event(LocalDateTime.of(10000, 1, 1, 1, 1, 1)),
-        new Event(LocalDateTime.of(100000, 1, 1, 1, 1, 1)),
-        new Event(LocalDateTime.of(1000000, 1, 1, 1, 1, 1))
+        new Event(new EventCreateDto(null, LocalDateTime.of(100, 1, 1, 1, 1, 1), "")),
+        new Event(new EventCreateDto(null, LocalDateTime.of(1000, 1, 1, 1, 1, 1), "")),
+        new Event(new EventCreateDto(null, LocalDateTime.of(10000, 1, 1, 1, 1, 1), "")),
+        new Event(new EventCreateDto(null, LocalDateTime.of(100000, 1, 1, 1, 1, 1), "")),
+        new Event(new EventCreateDto(null, LocalDateTime.of(1000000, 1, 1, 1, 1, 1), ""))
     );
     doReturn(mockEvents).when(eventService).findAll();
 
@@ -62,7 +62,7 @@ public class EventControllerTest {
   @Test
   @DisplayName("EventController#GET /api/v1/events/0 - FindsById")
   void EventController_GetEventById_ReturnsEvent () throws Exception {
-    Event mockEvent = new Event(LocalDateTime.of(2024,1, 1, 1, 1, 1, 1));
+    Event mockEvent = new Event(new EventCreateDto(null, LocalDateTime.of(2024,1, 1, 1, 1, 1, 1), ""));
     doReturn(Optional.of(mockEvent)).when(eventService).findById(0l);
 
     ResultActions res = mockMvc.perform(get("/api/v1/events/0"));
@@ -76,8 +76,8 @@ public class EventControllerTest {
   @DisplayName("EventController#POST /api/v1/events/create - Created")
   public void EventController_CreatesEvent_ReturnsEvent () throws Exception {
     LocalDateTime date = LocalDateTime.of(2024, 1, 1, 1, 1, 1, 1);
-    EventCreateDto eventCreateDto = new EventCreateDto(date);
-    Event event = new Event(date);
+    EventCreateDto eventCreateDto = new EventCreateDto(null, date, "");
+    Event event = new Event(new EventCreateDto(null, date, ""));
     doReturn(event).when(eventService).save(Mockito.any(Event.class));
 
     ResultActions res = mockMvc.perform(
