@@ -1,6 +1,6 @@
 package dev.nateschieber.animaladoptioncollective.controllers;
 
-import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.AdoptionCreateDto;
+import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.receive.AdoptionCreateDto;
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import dev.nateschieber.animaladoptioncollective.rest.responses.adoption.AdoptionEntityResponse;
 import dev.nateschieber.animaladoptioncollective.rest.responses.adoption.AdoptionGetAllResponse;
@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdoptionController {
 
   private final AdoptionService adoptionService;
-//  private final AdoptionRepository adoptionService;
 
   @Autowired
   public AdoptionController(AdoptionService adoptionService) {

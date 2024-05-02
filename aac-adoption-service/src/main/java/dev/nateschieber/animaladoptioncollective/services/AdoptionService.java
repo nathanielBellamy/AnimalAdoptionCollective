@@ -1,11 +1,10 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
-import dev.nateschieber.animaladoptioncollective.events.AacEvent;
 import dev.nateschieber.animaladoptioncollective.events.adoption.AdoptionCreateEvent;
 import dev.nateschieber.animaladoptioncollective.repositories.AdoptionRepository;
 import dev.nateschieber.animaladoptioncollective.rest.clients.EventClient;
-import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.AdoptionCreateDto;
+import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.receive.AdoptionCreateDto;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
