@@ -3,7 +3,7 @@ package dev.nateschieber.animaladoptioncollective.controllers;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.receive.AdoptionCreateDto;
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import dev.nateschieber.animaladoptioncollective.rest.responses.adoption.AdoptionEntityResponse;
-import dev.nateschieber.animaladoptioncollective.rest.responses.adoption.AdoptionGetAllResponse;
+import dev.nateschieber.animaladoptioncollective.rest.responses.adoption.send.AdoptionGetAllResponse;
 import dev.nateschieber.animaladoptioncollective.services.AdoptionService;
 import java.net.URI;
 import java.net.URISyntaxException;

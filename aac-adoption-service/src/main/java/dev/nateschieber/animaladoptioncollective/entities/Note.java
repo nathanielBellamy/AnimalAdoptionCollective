@@ -64,4 +64,28 @@ public class Note {
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonManagedReference
   private Set<Person> persons;
+
+  public Long getId() {
+    return id;
+  }
+
+  public UUID getUuid() {
+    return uuid;
+  }
+
+  public String getBody() {
+    return body;
+  }
+
+  public Set<Adoption> getAdoptions() {
+    return adoptions;
+  }
+
+  public Set<Pet> getPets() {
+    return pets;
+  }
+
+  public Set<Person> getPersons() {
+    return persons;
+  }
 }
