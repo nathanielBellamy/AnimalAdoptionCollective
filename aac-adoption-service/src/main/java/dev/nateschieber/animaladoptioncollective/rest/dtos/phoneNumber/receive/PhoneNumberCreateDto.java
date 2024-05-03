@@ -10,5 +10,6 @@ public record PhoneNumberCreateDto(
     @NotNull
     Integer number,
     Integer extension,
-    PhoneNumberType type
+    PhoneNumberType type,
+    Boolean archived
 ) implements PhoneNumberDto {}

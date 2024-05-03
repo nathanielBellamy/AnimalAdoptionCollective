@@ -31,7 +31,7 @@ public class PersonController {
 
   @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  public ResponseEntity createAdoption(@RequestBody PersonCreateDto dto) {
+  public ResponseEntity createPerson(@RequestBody PersonCreateDto dto) {
     Person personSaved = personService.createFromDto(dto);
     if (personSaved == null) {
       return ResponseEntity.internalServerError().build();

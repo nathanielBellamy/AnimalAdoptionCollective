@@ -3,6 +3,7 @@ package dev.nateschieber.animaladoptioncollective.entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import dev.nateschieber.animaladoptioncollective.rest.dtos.note.receive.NoteCreateDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.person.receive.PersonCreateDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.phoneNumber.PhoneNumberDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.phoneNumber.receive.PhoneNumberCreateDto;
@@ -47,9 +48,14 @@ public class Person {
   @JsonManagedReference
   private Set<PhoneNumber> phoneNumbers;
 
-  @ManyToMany(mappedBy = "persons")
+  @ManyToMany(fetch = FetchType.LAZY)
+  @JoinTable(
+      name = "note_to_person",
+      joinColumns = @JoinColumn(name = "note_id"),
+      inverseJoinColumns = @JoinColumn(name = "person_id")
+  )
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-  @JsonBackReference
+  @JsonManagedReference
   private Set<Note> notes;
 
   @ManyToMany(mappedBy = "persons")
@@ -67,9 +73,14 @@ public class Person {
     this.name = name;
 
     Set<PhoneNumber> phoneNumbers = dto.phoneNumbers().stream().map(
-        (PhoneNumberCreateDto pnDto) -> new PhoneNumber(pnDto)
+        (PhoneNumberCreateDto pncDto) -> new PhoneNumber(pncDto)
     ).collect(Collectors.toSet());
     this.phoneNumbers = phoneNumbers;
+
+    Set<Note> notes = dto.notes().stream().map(
+        (NoteCreateDto ncDto) -> new Note(ncDto)
+    ).collect(Collectors.toSet());
+    this.notes = notes;
   }
 
   public Long getId() {

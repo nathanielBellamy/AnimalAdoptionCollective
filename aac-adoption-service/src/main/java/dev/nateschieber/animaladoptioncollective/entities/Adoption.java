@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -30,9 +31,14 @@ public class Adoption {
   private UUID uuid;
   private LocalDate dateOfAdoption;
 
-  @ManyToMany(mappedBy = "adoptions")
+  @ManyToMany(fetch = FetchType.LAZY)
+  @JoinTable(
+      name = "note_to_adoption",
+      joinColumns = @JoinColumn(name = "adoption_id"),
+      inverseJoinColumns = @JoinColumn(name = "note_id")
+  )
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-  @JsonBackReference
+  @JsonManagedReference
   private Set<Note> notes;
 
   @ManyToMany(fetch = FetchType.LAZY)

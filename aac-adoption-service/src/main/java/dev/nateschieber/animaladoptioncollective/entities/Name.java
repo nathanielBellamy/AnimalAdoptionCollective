@@ -1,13 +1,18 @@
 package dev.nateschieber.animaladoptioncollective.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.nateschieber.animaladoptioncollective.enums.EntityType;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.name.receive.NameCreateDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.util.UUID;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Entity
 @Table(name = "names")
@@ -16,6 +21,7 @@ public class Name {
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id;
 
+  private UUID uuid;
   private EntityType entityType;
   private String firstNamePreferred;
   private String firstName;
@@ -27,6 +33,7 @@ public class Name {
   public Name() {}
 
   public Name(NameCreateDto dto) {
+    this.uuid = UUID.randomUUID();
     this.entityType = dto.entityType();
     this.firstName = dto.firstName();
     this.middleName = dto.middleName();
@@ -34,10 +41,14 @@ public class Name {
     this.firstNamePreferred = dto.firstNamePreferred();
   }
 
+  @JsonIgnore
   @OneToOne(mappedBy = "name")
+  @JoinColumn(nullable = true)
   private Person person;
 
+  @JsonIgnore
   @OneToOne(mappedBy = "name")
+  @JoinColumn(nullable = true)
   private Pet pet;
 
   public String fullName() {
@@ -53,6 +64,10 @@ public class Name {
 
   public EntityType getEntityType() {
     return entityType;
+  }
+
+  public void setEntityType(EntityType et) {
+    this.entityType = et;
   }
 
   public String getFirstNamePreferred() {
@@ -83,4 +98,7 @@ public class Name {
     return pet;
   }
 
+  public UUID getUuid() {
+    return uuid;
+  }
 }

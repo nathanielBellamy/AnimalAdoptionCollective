@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "b712b889-52b8-4691-a4b5-91c3268e122c",
+		"name": "AnimalAdoptionCollective",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34377069"
+	},
+	"item": [
+		{
+			"name": "Adoption Service",
+			"item": [
+				{
+					"name": "Adoption",
+					"item": [
+						{
+							"name": "Adoption Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"dateOfAdoption\": \"2024-01-02\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{aacAdoptionService}}/api/v1/adoptions/create",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"adoptions",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aacAdoptionService}}/api/v1/adoptions",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"adoptions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Name",
+					"item": [
+						{
+							"name": "Name Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"entityType\": \"PERSON\",\n    \"firstName\": \"Dwayne\",\n    \"middleName\": \"Douglas\",\n    \"lastName\": \"Johnson\",\n    \"firstNamePreffered\": \"The Rock\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{aacAdoptionService}}/api/v1/names/create",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"names",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Note",
+					"item": [
+						{
+							"name": "Note Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"body\": \"NOTE BODY BODY NOTE NOTE BODY BODY NOTE\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{aacAdoptionService}}/api/v1/notes/create",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"notes",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Person",
+					"item": [
+						{
+							"name": "Person Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"dateJoined\": \"2024-01-01\",\n    \"name\" : {\n        \"firstName\": \"Robert\",\n        \"middleName\": \"The Painter\",\n        \"lastName\": \"Ross\",\n        \"firstNamePreferred\": \"Bob\"\n    },\n    \"phoneNumbers\": [\n        {\n            \"countryCode\": 1,\n            \"areaCode\": 212,\n            \"number\": 5551234,\n            \"type\": \"MOBILE\"\n        }\n    ],\n    \"notes\":  [\n        {\n            \"body\": \"Likes to paint.\"\n        },\n        {\n            \"body\": \"The man. The myth. The legend.\"\n        },\n        {\n            \"body\": \"Happy trees.\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{aacAdoptionService}}/api/v1/persons/create",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"persons",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pet",
+					"item": [
+						{
+							"name": "Pet Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"DOG\",\n    \"size\": \"XL\",\n    \"breed\": \"Great Dane\",\n    \"name\" : {\n        \"firstName\": \"Marmaduke\",\n        \"lastName\": \"Smith\",\n        \"firstNamePreferred\": \"Good Boy\"\n    },\n    \"dateOfBirth\": \"2015-01-01\",\n    \"notes\": [\n        {\n            \"body\": \"Is a good boy.\"\n        },\n        {\n            \"body\": \"Likes cheese.\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{aacAdoptionService}}/api/v1/pets/create",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"pets",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Phone Number",
+					"item": [
+						{
+							"name": "Phone Number Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"countryCode\": 1,\n    \"areaCode\": 212,\n    \"number\": 5551234,\n    \"extension\": 123,\n    \"type\": \"WORK\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{aacAdoptionService}}/{{apiVersion}}/phonenumbers/create",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"phonenumbers",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Event Service",
+			"item": [
+				{
+					"name": "Event Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"at\": \"2024-05-01T17:47:14.03959063\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aacEventService}}/api/v1/events/create",
+							"host": [
+								"{{aacEventService}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aacEventService}}/api/v1/events",
+							"host": [
+								"{{aacEventService}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "aacEventService",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "aacAdoptionService",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "apiVersion",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

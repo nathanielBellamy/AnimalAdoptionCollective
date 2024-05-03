@@ -16,6 +16,10 @@ public class NameService {
     this.repository = repository;
   }
 
+  public Name save(Name name) {
+    return repository.save(name);
+  }
+
   public Name createFromDto(NameCreateDto dto) {
     Name name = new Name(dto);
     return repository.save(name);

@@ -9,8 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -34,17 +35,18 @@ public class PhoneNumber {
   @ManyToMany(mappedBy = "phoneNumbers")
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonBackReference
-  private Set<Person> person;
+  private Set<Person> persons;
 
   public PhoneNumber() {}
 
   public PhoneNumber(PhoneNumberCreateDto dto) {
     this.uuid = UUID.randomUUID();
-    this.countryCode = dto.countryCode() != null ? dto.countryCode() : 1;
+    this.countryCode = dto.countryCode(); // maybe null
     this.areaCode = dto.areaCode();
     this.number = dto.number();
     this.extension = dto.extension();
     this.type = dto.type();
+    this.archived = Optional.ofNullable(dto.archived()).orElse(false);
   }
 
   public long getId() {
@@ -73,5 +75,17 @@ public class PhoneNumber {
 
   public boolean getArchived() {
     return archived;
+  }
+
+  public boolean isArchived() {
+    return archived;
+  }
+
+  public PhoneNumberType getType() {
+    return type;
+  }
+
+  public List<Person> getPersons() {
+    return persons.stream().toList();
   }
 }
