@@ -55,7 +55,7 @@ public class Person {
   @ManyToMany(mappedBy = "persons")
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonBackReference
-  private List<Adoption> adoptions;
+  private Set<Adoption> adoptions;
 
   public Person() {}
 
@@ -70,5 +70,33 @@ public class Person {
         (PhoneNumberCreateDto pnDto) -> new PhoneNumber(pnDto)
     ).collect(Collectors.toSet());
     this.phoneNumbers = phoneNumbers;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public UUID getUuid() {
+    return uuid;
+  }
+
+  public LocalDate getDateJoined() {
+    return dateJoined;
+  }
+
+  public Name getName() {
+    return name;
+  }
+
+  public Set<PhoneNumber> getPhoneNumbers() {
+    return phoneNumbers;
+  }
+
+  public List<Note> getNotes() {
+    return notes.stream().toList();
+  }
+
+  public List<Adoption> getAdoptions() {
+    return adoptions.stream().toList();
   }
 }
