@@ -56,17 +56,18 @@ public class AdoptionController {
   @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   public ResponseEntity createAdoption(@RequestBody AdoptionCreateDto dto) {
-    Adoption adoptionSaved = adoptionService.createFromDto(dto);
-    if (adoptionSaved == null) {
-      return ResponseEntity.internalServerError().build();
+    Optional<Adoption> adoptionSaved = adoptionService.createFromDto(dto);
+    if (!adoptionSaved.isPresent()) {
+      return ResponseEntity.unprocessableEntity().build();
     }
 
+    Adoption adoption = adoptionSaved.get();
     URI uri;
     try {
-      uri = new URI("/adoptions/" + adoptionSaved.getId());
+      uri = new URI("/adoptions/" + adoption.getId());
     } catch (URISyntaxException e) {
       uri = null;
     }
-    return ResponseEntity.created(uri).body(new AdoptionEntityResponse(adoptionSaved));
+    return ResponseEntity.created(uri).body(new AdoptionEntityResponse(adoption));
   }
 }

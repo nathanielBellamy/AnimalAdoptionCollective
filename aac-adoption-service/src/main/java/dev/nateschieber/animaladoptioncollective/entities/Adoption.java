@@ -17,7 +17,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -41,9 +43,9 @@ public class Adoption {
   @JsonManagedReference
   private Set<Note> notes;
 
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany(mappedBy = "adoptions")
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-  @JsonManagedReference
+  @JsonBackReference
   private Set<Person> persons;
 
   @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -81,7 +83,7 @@ public class Adoption {
   }
 
   public List<Note> getNotes() {
-    return notes.stream().toList();
+    return Optional.of(notes).orElse(Collections.emptySet()).stream().toList();
   }
 
   public List<Person> getPersons() {

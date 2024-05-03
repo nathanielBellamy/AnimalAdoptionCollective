@@ -19,7 +19,9 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -41,8 +43,8 @@ public class Person {
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
       name = "person_to_phoneNumber",
-      joinColumns = @JoinColumn(name = "person_id"),
-      inverseJoinColumns = @JoinColumn(name = "phoneNumber_id")
+      joinColumns = @JoinColumn(name = "phoneNumber_id"),
+      inverseJoinColumns = @JoinColumn(name = "person_id")
   )
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonManagedReference
@@ -59,8 +61,13 @@ public class Person {
   private Set<Note> notes;
 
   @ManyToMany(mappedBy = "persons")
+  @JoinTable(
+      name = "adoption_to_person",
+      joinColumns = @JoinColumn(name = "adoption_id"),
+      inverseJoinColumns = @JoinColumn(name = "person_id")
+  )
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-  @JsonBackReference
+  @JsonManagedReference
   private Set<Adoption> adoptions;
 
   public Person() {}
@@ -104,7 +111,7 @@ public class Person {
   }
 
   public List<Note> getNotes() {
-    return notes.stream().toList();
+    return Optional.ofNullable(notes).orElse(Collections.emptySet()).stream().toList();
   }
 
   public List<Adoption> getAdoptions() {

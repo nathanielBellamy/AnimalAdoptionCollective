@@ -5,13 +5,17 @@ import dev.nateschieber.animaladoptioncollective.entities.Pet;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.person.receive.PersonCreateDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.pet.receive.PetCreateDto;
 import dev.nateschieber.animaladoptioncollective.rest.responses.person.send.PersonEntityResponse;
+import dev.nateschieber.animaladoptioncollective.rest.responses.person.send.PersonGetAllResponse;
 import dev.nateschieber.animaladoptioncollective.rest.responses.pet.send.PetEntityResponse;
+import dev.nateschieber.animaladoptioncollective.rest.responses.pet.send.PetGetAllResponse;
 import dev.nateschieber.animaladoptioncollective.services.PetService;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +31,13 @@ public class PetController {
   @Autowired
   public PetController(PetService petService) {
     this.petService = petService;
+  }
+
+  @GetMapping("")
+  @ResponseBody
+  public ResponseEntity getAll() {
+    List<Pet> pets = petService.findAll();
+    return ResponseEntity.ok().body(new PetGetAllResponse(pets));
   }
 
   @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -20,7 +20,9 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -102,7 +104,7 @@ public class Pet {
   }
 
   public List<Note> getNotes() {
-    return notes.stream().toList();
+    return Optional.of(notes).orElse(Collections.emptySet()).stream().toList();
   }
 
   public Adoption getAdoption() {

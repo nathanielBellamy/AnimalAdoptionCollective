@@ -5,6 +5,8 @@ import dev.nateschieber.animaladoptioncollective.entities.Pet;
 import dev.nateschieber.animaladoptioncollective.enums.EntityType;
 import dev.nateschieber.animaladoptioncollective.repositories.PetRepository;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.pet.receive.PetCreateDto;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,18 @@ public class PetService {
     this.petRepository = petRepository;
     this.nameService = nameService;
     this.noteService = noteService;
+  }
+
+  public List<Pet> findAll() {
+    return petRepository.findAll();
+  }
+
+  public Optional<Pet> findById(Long id) {
+    return petRepository.findById(id);
+  }
+
+  public Pet save(Pet pet) {
+    return petRepository.save(pet);
   }
 
   public Pet createFromDto(PetCreateDto dto) {

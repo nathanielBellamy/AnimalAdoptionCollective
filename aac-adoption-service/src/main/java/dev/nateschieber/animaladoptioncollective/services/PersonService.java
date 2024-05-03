@@ -30,6 +30,18 @@ public class PersonService {
     this.phoneNumberService = phoneNumberService;
   }
 
+  public List<Person> findAll() {
+    return personRepository.findAll();
+  }
+
+  public List<Person> findAllById(List<Long> personIds) {
+    return personRepository.findAllById(personIds);
+  }
+
+  public List<Person> saveAll(List<Person> persons) {
+    return personRepository.saveAll(persons);
+  }
+
   public Person createFromDto(PersonCreateDto dto) {
     Person person = new Person(dto);
 

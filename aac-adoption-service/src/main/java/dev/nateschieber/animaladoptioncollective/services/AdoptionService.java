@@ -1,6 +1,8 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
+import dev.nateschieber.animaladoptioncollective.entities.Person;
+import dev.nateschieber.animaladoptioncollective.entities.Pet;
 import dev.nateschieber.animaladoptioncollective.events.adoption.AdoptionCreateEvent;
 import dev.nateschieber.animaladoptioncollective.repositories.AdoptionRepository;
 import dev.nateschieber.animaladoptioncollective.rest.clients.EventClient;
@@ -14,11 +16,19 @@ import org.springframework.stereotype.Service;
 public class AdoptionService {
 
   private final AdoptionRepository adoptionRepository;
+  private final PersonService personService;
+  private final PetService petService;
   private final EventClient eventClient;
 
   @Autowired
-  public AdoptionService(AdoptionRepository adoptionRepository, EventClient eventClient) {
+  public AdoptionService(
+      AdoptionRepository adoptionRepository,
+      PersonService personService,
+      PetService petService,
+      EventClient eventClient) {
     this.adoptionRepository = adoptionRepository;
+    this.personService = personService;
+    this.petService = petService;
     this.eventClient = eventClient;
   }
 
@@ -39,9 +49,22 @@ public class AdoptionService {
     return savedAdoption;
   }
 
-  public Adoption createFromDto(AdoptionCreateDto dto) {
+  public Optional<Adoption> createFromDto(AdoptionCreateDto dto) {
     Adoption adoption = new Adoption(dto);
-    return this.save(adoption);
+
+    List<Person> persons = personService.findAllById(dto.personIds());
+    Optional<Pet> pet = petService.findById(dto.petId());
+
+    if (persons.size() == 0 || !pet.isPresent()) {
+      return Optional.empty();
+    } else {
+      personService.saveAll(persons);
+      petService.save(pet.get());
+    }
+
+    return Optional.of(
+        save(adoption)
+    );
   }
 
   public void printRepo() {
