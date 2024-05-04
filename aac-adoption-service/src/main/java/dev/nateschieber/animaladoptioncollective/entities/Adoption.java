@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.receive.AdoptionCreateDto;
-import jakarta.persistence.CascadeType;
+import dev.nateschieber.animaladoptioncollective.rest.dtos.note.receive.NoteCreateDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,8 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.Collections;
@@ -22,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "adoptions")
@@ -45,13 +45,10 @@ public class Adoption {
 
   @ManyToMany(mappedBy = "adoptions")
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-  @JsonBackReference
   private Set<Person> persons;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  @JoinColumn(name="pet_id", referencedColumnName="id")
+  @ManyToOne
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-  @JsonManagedReference
   private Pet pet;
 
   public Adoption() {}
@@ -59,6 +56,12 @@ public class Adoption {
   public Adoption(AdoptionCreateDto dto) {
     this.uuid = UUID.randomUUID();
     this.dateOfAdoption = dto.dateOfAdoption();
+    this.notes = Optional
+        .ofNullable(dto.notes())
+        .orElse(Collections.emptyList())
+        .stream()
+        .map(ncd -> new Note(ncd))
+        .collect(Collectors.toSet());
   }
 
   public long getId() {
@@ -83,14 +86,30 @@ public class Adoption {
   }
 
   public List<Note> getNotes() {
-    return Optional.of(notes).orElse(Collections.emptySet()).stream().toList();
+    return Optional
+        .ofNullable(notes)
+        .orElse(Collections.emptySet())
+        .stream()
+        .toList();
   }
 
   public List<Person> getPersons() {
-    return persons.stream().toList();
+    return Optional
+        .ofNullable(persons)
+        .orElse(Collections.emptySet())
+        .stream()
+        .toList();
   }
 
   public Pet getPet() {
     return pet;
+  }
+
+  public void setPet(Pet pet) {
+    this.pet = pet;
+  }
+
+  public void setPersons(Set<Person> persons) {
+    this.persons = persons;
   }
 }

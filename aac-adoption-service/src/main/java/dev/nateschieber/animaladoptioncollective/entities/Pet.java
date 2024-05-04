@@ -1,6 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.nateschieber.animaladoptioncollective.enums.EntityType;
@@ -17,6 +18,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
@@ -54,10 +56,12 @@ public class Pet {
   @JsonManagedReference
   private Set<Note> notes;
 
-  @OneToOne(mappedBy = "pet")
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name="adoption_id", referencedColumnName="id")
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-  @JsonBackReference
-  private Adoption adoption;
+  @JsonManagedReference
+  @JsonIgnore
+  private Set<Adoption> adoptions;
 
   public Pet() {}
 
@@ -104,10 +108,22 @@ public class Pet {
   }
 
   public List<Note> getNotes() {
-    return Optional.of(notes).orElse(Collections.emptySet()).stream().toList();
+    return Optional
+        .ofNullable(notes)
+        .orElse(Collections.emptySet())
+        .stream()
+        .toList();
   }
 
-  public Adoption getAdoption() {
-    return adoption;
+  public List<Adoption> getAdoptions() {
+    return Optional
+        .ofNullable(adoptions)
+        .orElse(Collections.emptySet())
+        .stream()
+        .toList();
+  }
+
+  public void addAdoption(Adoption adoption) {
+    this.adoptions.add(adoption);
   }
 }

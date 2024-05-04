@@ -7,6 +7,7 @@ import dev.nateschieber.animaladoptioncollective.enums.EntityType;
 import dev.nateschieber.animaladoptioncollective.repositories.PersonRepository;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.person.receive.PersonCreateDto;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +35,16 @@ public class PersonService {
     return personRepository.findAll();
   }
 
+  public Optional<Person> findById(Long id) {
+    return personRepository.findById(id);
+  }
+
   public List<Person> findAllById(List<Long> personIds) {
     return personRepository.findAllById(personIds);
+  }
+
+  public Person save(Person person) {
+    return personRepository.save(person);
   }
 
   public List<Person> saveAll(List<Person> persons) {

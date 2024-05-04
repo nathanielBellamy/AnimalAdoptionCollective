@@ -19,7 +19,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"dateOfAdoption\": \"2024-01-02\"\n}",
+									"raw": "{\n    \"dateOfAdoption\": \"2028-01-02\",\n    \"personIds\": [1, 2],\n    \"petId\": 1,\n    \"notes\": [\n        {\n            \"body\": \"Adopters seemed cool.\"\n        },\n        {\n            \"body\": \"Veternarian consulted with adopters about best care practices.\" \n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -39,7 +39,67 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Adoption Create",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"dateOfAdoption\": \"2028-01-02\",\n    \"personIds\": [1, 2],\n    \"petId\": 1,\n    \"notes\": [\n        {\n            \"body\": \"Adopters seemed cool.\"\n        },\n        {\n            \"body\": \"Veternarian consulted with adopters about best care practices.\" \n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{aacAdoptionService}}/api/v1/adoptions/create",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"adoptions",
+												"create"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/adoptions/1"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:21:52 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:21:52.516629453\",\n    \"momentOfGratitude\": \"A grateful mind is a great mind which eventually attracts to itself great things. — Plato\",\n    \"data\": {\n        \"adoption\": {\n            \"id\": 1,\n            \"uuid\": \"52f22359-9806-431a-affa-700c656a5917\",\n            \"dateOfAdoption\": \"2028-01-02\",\n            \"notes\": [\n                {\n                    \"id\": 11,\n                    \"uuid\": \"4efdf45d-4498-43c2-bc1f-da7dfbc86814\",\n                    \"body\": \"Adopters seemed cool.\"\n                },\n                {\n                    \"id\": 12,\n                    \"uuid\": \"6f1998f2-237d-466c-9c23-3ec633518d94\",\n                    \"body\": \"Veternarian consulted with adopters about best care practices.\"\n                }\n            ],\n            \"persons\": [\n                {\n                    \"id\": 2,\n                    \"uuid\": \"7a8250fd-4191-4af5-9d90-62d1c8d2700f\",\n                    \"dateJoined\": \"2024-01-01\",\n                    \"name\": {\n                        \"id\": 2,\n                        \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                        \"entityType\": \"PERSON\",\n                        \"firstNamePreferred\": \"Bob\",\n                        \"firstName\": \"Robert\",\n                        \"middleName\": \"The Painter\",\n                        \"lastName\": \"Ross\",\n                        \"archived\": false\n                    },\n                    \"phoneNumbers\": [\n                        {\n                            \"id\": 2,\n                            \"uuid\": \"feffb4bc-1192-47fc-a38c-a3273bfd5baf\",\n                            \"countryCode\": 1,\n                            \"areaCode\": 212,\n                            \"number\": 5551234,\n                            \"extension\": null,\n                            \"archived\": false,\n                            \"type\": \"MOBILE\"\n                        }\n                    ],\n                    \"notes\": [\n                        {\n                            \"id\": 4,\n                            \"uuid\": \"04ade4a4-6bd1-4f84-a337-9fa04f80a45c\",\n                            \"body\": \"The man. The myth. The legend.\"\n                        },\n                        {\n                            \"id\": 5,\n                            \"uuid\": \"f0277340-23aa-43f3-bf05-8329ed83b123\",\n                            \"body\": \"Happy trees.\"\n                        },\n                        {\n                            \"id\": 6,\n                            \"uuid\": \"0c4ce1e8-3aa2-47bc-a014-ed3d128c1d87\",\n                            \"body\": \"Likes to paint.\"\n                        }\n                    ]\n                },\n                {\n                    \"id\": 1,\n                    \"uuid\": \"eb3c088e-a396-4da8-ab21-bc087e334703\",\n                    \"dateJoined\": \"2024-01-01\",\n                    \"name\": {\n                        \"id\": 1,\n                        \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                        \"entityType\": \"PERSON\",\n                        \"firstNamePreferred\": \"Bob\",\n                        \"firstName\": \"Robert\",\n                        \"middleName\": \"The Painter\",\n                        \"lastName\": \"Ross\",\n                        \"archived\": false\n                    },\n                    \"phoneNumbers\": [\n                        {\n                            \"id\": 1,\n                            \"uuid\": \"698d0e3d-0be2-4c62-a95f-470b2c8f741e\",\n                            \"countryCode\": 1,\n                            \"areaCode\": 212,\n                            \"number\": 5551234,\n                            \"extension\": null,\n                            \"archived\": false,\n                            \"type\": \"MOBILE\"\n                        }\n                    ],\n                    \"notes\": [\n                        {\n                            \"id\": 2,\n                            \"uuid\": \"ea1a22f8-c64b-4f19-807c-eadcacecf632\",\n                            \"body\": \"Happy trees.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"uuid\": \"51642e26-5d51-4804-941f-2bc4d03463b9\",\n                            \"body\": \"Likes to paint.\"\n                        },\n                        {\n                            \"id\": 1,\n                            \"uuid\": \"864b9b2a-1c2c-4060-8dde-2a1a452eebc0\",\n                            \"body\": \"The man. The myth. The legend.\"\n                        }\n                    ]\n                }\n            ],\n            \"pet\": {\n                \"id\": 1,\n                \"petType\": \"DOG\",\n                \"petSize\": \"XL\",\n                \"breed\": \"Great Dane\",\n                \"dateOfBirth\": \"2015-01-01\",\n                \"dateOfIntake\": \"2024-05-03\",\n                \"name\": {\n                    \"id\": 3,\n                    \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                    \"entityType\": \"PET\",\n                    \"firstNamePreferred\": \"Good Boy\",\n                    \"firstName\": \"Marmaduke\",\n                    \"middleName\": null,\n                    \"lastName\": \"Smith\",\n                    \"archived\": false\n                },\n                \"notes\": [\n                    {\n                        \"id\": 8,\n                        \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                        \"body\": \"Likes cheese.\"\n                    },\n                    {\n                        \"id\": 7,\n                        \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                        \"body\": \"Is a good boy.\"\n                    }\n                ]\n            }\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "Get All",
@@ -58,7 +118,53 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Get All",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{aacAdoptionService}}/api/v1/adoptions",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"adoptions"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:24:45 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:24:45.437006979\",\n    \"momentOfGratitude\": \"When we focus on our gratitude, the tide of disappointment goes out and the tide of love rushes in. — Kristin Armstrong\",\n    \"data\": {\n        \"adoptionsCount\": 2,\n        \"adoptions\": [\n            {\n                \"id\": 1,\n                \"uuid\": \"52f22359-9806-431a-affa-700c656a5917\",\n                \"dateOfAdoption\": \"2028-01-02\",\n                \"notes\": [\n                    {\n                        \"id\": 11,\n                        \"uuid\": \"4efdf45d-4498-43c2-bc1f-da7dfbc86814\",\n                        \"body\": \"Adopters seemed cool.\"\n                    },\n                    {\n                        \"id\": 12,\n                        \"uuid\": \"6f1998f2-237d-466c-9c23-3ec633518d94\",\n                        \"body\": \"Veternarian consulted with adopters about best care practices.\"\n                    }\n                ],\n                \"persons\": [\n                    {\n                        \"id\": 1,\n                        \"uuid\": \"eb3c088e-a396-4da8-ab21-bc087e334703\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 1,\n                            \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"698d0e3d-0be2-4c62-a95f-470b2c8f741e\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"ea1a22f8-c64b-4f19-807c-eadcacecf632\",\n                                \"body\": \"Happy trees.\"\n                            },\n                            {\n                                \"id\": 3,\n                                \"uuid\": \"51642e26-5d51-4804-941f-2bc4d03463b9\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"864b9b2a-1c2c-4060-8dde-2a1a452eebc0\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 2,\n                        \"uuid\": \"7a8250fd-4191-4af5-9d90-62d1c8d2700f\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 2,\n                            \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"feffb4bc-1192-47fc-a38c-a3273bfd5baf\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 4,\n                                \"uuid\": \"04ade4a4-6bd1-4f84-a337-9fa04f80a45c\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            },\n                            {\n                                \"id\": 6,\n                                \"uuid\": \"0c4ce1e8-3aa2-47bc-a014-ed3d128c1d87\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 5,\n                                \"uuid\": \"f0277340-23aa-43f3-bf05-8329ed83b123\",\n                                \"body\": \"Happy trees.\"\n                            }\n                        ]\n                    }\n                ],\n                \"pet\": {\n                    \"id\": 1,\n                    \"petType\": \"DOG\",\n                    \"petSize\": \"XL\",\n                    \"breed\": \"Great Dane\",\n                    \"dateOfBirth\": \"2015-01-01\",\n                    \"dateOfIntake\": \"2024-05-03\",\n                    \"name\": {\n                        \"id\": 3,\n                        \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                        \"entityType\": \"PET\",\n                        \"firstNamePreferred\": \"Good Boy\",\n                        \"firstName\": \"Marmaduke\",\n                        \"middleName\": null,\n                        \"lastName\": \"Smith\",\n                        \"archived\": false\n                    },\n                    \"notes\": [\n                        {\n                            \"id\": 7,\n                            \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                            \"body\": \"Is a good boy.\"\n                        },\n                        {\n                            \"id\": 8,\n                            \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                            \"body\": \"Likes cheese.\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"id\": 2,\n                \"uuid\": \"149b7295-aeea-4c2f-a700-a2765278590e\",\n                \"dateOfAdoption\": \"2028-01-02\",\n                \"notes\": [\n                    {\n                        \"id\": 13,\n                        \"uuid\": \"79aa8032-19c6-4708-a7b3-af19114ef268\",\n                        \"body\": \"Veternarian consulted with adopters about best care practices.\"\n                    },\n                    {\n                        \"id\": 14,\n                        \"uuid\": \"fedcd28b-078c-4e2d-a0db-36842c6d2ae6\",\n                        \"body\": \"Adopters seemed cool.\"\n                    }\n                ],\n                \"persons\": [\n                    {\n                        \"id\": 1,\n                        \"uuid\": \"eb3c088e-a396-4da8-ab21-bc087e334703\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 1,\n                            \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"698d0e3d-0be2-4c62-a95f-470b2c8f741e\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"ea1a22f8-c64b-4f19-807c-eadcacecf632\",\n                                \"body\": \"Happy trees.\"\n                            },\n                            {\n                                \"id\": 3,\n                                \"uuid\": \"51642e26-5d51-4804-941f-2bc4d03463b9\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"864b9b2a-1c2c-4060-8dde-2a1a452eebc0\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 2,\n                        \"uuid\": \"7a8250fd-4191-4af5-9d90-62d1c8d2700f\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 2,\n                            \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"feffb4bc-1192-47fc-a38c-a3273bfd5baf\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 4,\n                                \"uuid\": \"04ade4a4-6bd1-4f84-a337-9fa04f80a45c\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            },\n                            {\n                                \"id\": 6,\n                                \"uuid\": \"0c4ce1e8-3aa2-47bc-a014-ed3d128c1d87\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 5,\n                                \"uuid\": \"f0277340-23aa-43f3-bf05-8329ed83b123\",\n                                \"body\": \"Happy trees.\"\n                            }\n                        ]\n                    }\n                ],\n                \"pet\": {\n                    \"id\": 1,\n                    \"petType\": \"DOG\",\n                    \"petSize\": \"XL\",\n                    \"breed\": \"Great Dane\",\n                    \"dateOfBirth\": \"2015-01-01\",\n                    \"dateOfIntake\": \"2024-05-03\",\n                    \"name\": {\n                        \"id\": 3,\n                        \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                        \"entityType\": \"PET\",\n                        \"firstNamePreferred\": \"Good Boy\",\n                        \"firstName\": \"Marmaduke\",\n                        \"middleName\": null,\n                        \"lastName\": \"Smith\",\n                        \"archived\": false\n                    },\n                    \"notes\": [\n                        {\n                            \"id\": 7,\n                            \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                            \"body\": \"Is a good boy.\"\n                        },\n                        {\n                            \"id\": 8,\n                            \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                            \"body\": \"Likes cheese.\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -92,7 +198,130 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"entityType\": \"PERSON\",\n    \"firstName\": \"Dwayne\",\n    \"middleName\": \"Douglas\",\n    \"lastName\": \"Johnson\",\n    \"firstNamePreffered\": \"The Rock\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{aacAdoptionService}}/api/v1/names/create",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"names",
+												"create"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/names/52"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:25:19 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:25:19.483648609\",\n    \"momentOfGratitude\": \"A grateful mind is a great mind which eventually attracts to itself great things. — Plato\",\n    \"data\": {\n        \"name\": {\n            \"id\": 52,\n            \"uuid\": \"f1bef90d-d3f2-44a3-9606-f21f56d919f1\",\n            \"entityType\": \"PERSON\",\n            \"firstNamePreferred\": null,\n            \"firstName\": \"Dwayne\",\n            \"middleName\": \"Douglas\",\n            \"lastName\": \"Johnson\",\n            \"archived\": false\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get All Names",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aacAdoptionService}}/{{apiVersion}}/names",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"names"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{aacAdoptionService}}/{{apiVersion}}/names",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"{{apiVersion}}",
+												"names"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:25:31 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:25:31.718307574\",\n    \"momentOfGratitude\": \"This is a wonderful day. I have never seen this one before. — Maya Angelou\",\n    \"data\": {\n        \"count\": 5,\n        \"names\": [\n            {\n                \"id\": 1,\n                \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                \"entityType\": \"PERSON\",\n                \"firstNamePreferred\": \"Bob\",\n                \"firstName\": \"Robert\",\n                \"middleName\": \"The Painter\",\n                \"lastName\": \"Ross\",\n                \"archived\": false\n            },\n            {\n                \"id\": 2,\n                \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                \"entityType\": \"PERSON\",\n                \"firstNamePreferred\": \"Bob\",\n                \"firstName\": \"Robert\",\n                \"middleName\": \"The Painter\",\n                \"lastName\": \"Ross\",\n                \"archived\": false\n            },\n            {\n                \"id\": 3,\n                \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                \"entityType\": \"PET\",\n                \"firstNamePreferred\": \"Good Boy\",\n                \"firstName\": \"Marmaduke\",\n                \"middleName\": null,\n                \"lastName\": \"Smith\",\n                \"archived\": false\n            },\n            {\n                \"id\": 4,\n                \"uuid\": \"670967dc-c37b-42cf-bf9e-a9a19634da33\",\n                \"entityType\": \"PET\",\n                \"firstNamePreferred\": \"Good Boy\",\n                \"firstName\": \"Marmaduke\",\n                \"middleName\": null,\n                \"lastName\": \"Smith\",\n                \"archived\": false\n            },\n            {\n                \"id\": 52,\n                \"uuid\": \"f1bef90d-d3f2-44a3-9606-f21f56d919f1\",\n                \"entityType\": \"PERSON\",\n                \"firstNamePreferred\": null,\n                \"firstName\": \"Dwayne\",\n                \"middleName\": \"Douglas\",\n                \"lastName\": \"Johnson\",\n                \"archived\": false\n            }\n        ]\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -126,7 +355,67 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"body\": \"NOTE BODY BODY NOTE NOTE BODY BODY NOTE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{aacAdoptionService}}/api/v1/notes/create",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"notes",
+												"create"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/notes/52"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:27:27 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:27:27.520866224\",\n    \"momentOfGratitude\": \"Do something today that your future self will thank you for. — Sean Patrick Flanery\",\n    \"data\": {\n        \"note\": {\n            \"id\": 52,\n            \"uuid\": \"c3d3bb53-2c05-4434-8edd-bc07f9d19b87\",\n            \"body\": \"NOTE BODY BODY NOTE NOTE BODY BODY NOTE\"\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -160,7 +449,207 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"dateJoined\": \"2024-01-01\",\n    \"name\" : {\n        \"firstName\": \"Robert\",\n        \"middleName\": \"The Painter\",\n        \"lastName\": \"Ross\",\n        \"firstNamePreferred\": \"Bob\"\n    },\n    \"phoneNumbers\": [\n        {\n            \"countryCode\": 1,\n            \"areaCode\": 212,\n            \"number\": 5551234,\n            \"type\": \"MOBILE\"\n        }\n    ],\n    \"notes\":  [\n        {\n            \"body\": \"Likes to paint.\"\n        },\n        {\n            \"body\": \"The man. The myth. The legend.\"\n        },\n        {\n            \"body\": \"Happy trees.\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{aacAdoptionService}}/api/v1/persons/create",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"persons",
+												"create"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/persons/1"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:20:11 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:20:11.126364571\",\n    \"momentOfGratitude\": \"A grateful mind is a great mind which eventually attracts to itself great things. — Plato\",\n    \"data\": {\n        \"person\": {\n            \"id\": 1,\n            \"uuid\": \"eb3c088e-a396-4da8-ab21-bc087e334703\",\n            \"dateJoined\": \"2024-01-01\",\n            \"name\": {\n                \"id\": 1,\n                \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                \"entityType\": \"PERSON\",\n                \"firstNamePreferred\": \"Bob\",\n                \"firstName\": \"Robert\",\n                \"middleName\": \"The Painter\",\n                \"lastName\": \"Ross\",\n                \"archived\": false\n            },\n            \"phoneNumbers\": [\n                {\n                    \"id\": 1,\n                    \"uuid\": \"698d0e3d-0be2-4c62-a95f-470b2c8f741e\",\n                    \"countryCode\": 1,\n                    \"areaCode\": 212,\n                    \"number\": 5551234,\n                    \"extension\": null,\n                    \"archived\": false,\n                    \"type\": \"MOBILE\"\n                }\n            ],\n            \"notes\": [\n                {\n                    \"id\": 1,\n                    \"uuid\": \"864b9b2a-1c2c-4060-8dde-2a1a452eebc0\",\n                    \"body\": \"The man. The myth. The legend.\"\n                },\n                {\n                    \"id\": 2,\n                    \"uuid\": \"ea1a22f8-c64b-4f19-807c-eadcacecf632\",\n                    \"body\": \"Happy trees.\"\n                },\n                {\n                    \"id\": 3,\n                    \"uuid\": \"51642e26-5d51-4804-941f-2bc4d03463b9\",\n                    \"body\": \"Likes to paint.\"\n                }\n            ]\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get All Persons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aacAdoptionService}}/{{apiVersion}}/persons",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"persons"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{aacAdoptionService}}/{{apiVersion}}/persons",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"{{apiVersion}}",
+												"persons"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:20:36 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:20:36.054194231\",\n    \"momentOfGratitude\": \"Gratitude and attitude are not challenges; they are choices. — Robert Braathe\",\n    \"data\": {\n        \"size\": 2,\n        \"persons\": [\n            {\n                \"id\": 1,\n                \"uuid\": \"eb3c088e-a396-4da8-ab21-bc087e334703\",\n                \"dateJoined\": \"2024-01-01\",\n                \"name\": {\n                    \"id\": 1,\n                    \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                    \"entityType\": \"PERSON\",\n                    \"firstNamePreferred\": \"Bob\",\n                    \"firstName\": \"Robert\",\n                    \"middleName\": \"The Painter\",\n                    \"lastName\": \"Ross\",\n                    \"archived\": false\n                },\n                \"phoneNumbers\": [\n                    {\n                        \"id\": 1,\n                        \"uuid\": \"698d0e3d-0be2-4c62-a95f-470b2c8f741e\",\n                        \"countryCode\": 1,\n                        \"areaCode\": 212,\n                        \"number\": 5551234,\n                        \"extension\": null,\n                        \"archived\": false,\n                        \"type\": \"MOBILE\"\n                    }\n                ],\n                \"notes\": [\n                    {\n                        \"id\": 2,\n                        \"uuid\": \"ea1a22f8-c64b-4f19-807c-eadcacecf632\",\n                        \"body\": \"Happy trees.\"\n                    },\n                    {\n                        \"id\": 1,\n                        \"uuid\": \"864b9b2a-1c2c-4060-8dde-2a1a452eebc0\",\n                        \"body\": \"The man. The myth. The legend.\"\n                    },\n                    {\n                        \"id\": 3,\n                        \"uuid\": \"51642e26-5d51-4804-941f-2bc4d03463b9\",\n                        \"body\": \"Likes to paint.\"\n                    }\n                ]\n            },\n            {\n                \"id\": 2,\n                \"uuid\": \"7a8250fd-4191-4af5-9d90-62d1c8d2700f\",\n                \"dateJoined\": \"2024-01-01\",\n                \"name\": {\n                    \"id\": 2,\n                    \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                    \"entityType\": \"PERSON\",\n                    \"firstNamePreferred\": \"Bob\",\n                    \"firstName\": \"Robert\",\n                    \"middleName\": \"The Painter\",\n                    \"lastName\": \"Ross\",\n                    \"archived\": false\n                },\n                \"phoneNumbers\": [\n                    {\n                        \"id\": 2,\n                        \"uuid\": \"feffb4bc-1192-47fc-a38c-a3273bfd5baf\",\n                        \"countryCode\": 1,\n                        \"areaCode\": 212,\n                        \"number\": 5551234,\n                        \"extension\": null,\n                        \"archived\": false,\n                        \"type\": \"MOBILE\"\n                    }\n                ],\n                \"notes\": [\n                    {\n                        \"id\": 6,\n                        \"uuid\": \"0c4ce1e8-3aa2-47bc-a014-ed3d128c1d87\",\n                        \"body\": \"Likes to paint.\"\n                    },\n                    {\n                        \"id\": 4,\n                        \"uuid\": \"04ade4a4-6bd1-4f84-a337-9fa04f80a45c\",\n                        \"body\": \"The man. The myth. The legend.\"\n                    },\n                    {\n                        \"id\": 5,\n                        \"uuid\": \"f0277340-23aa-43f3-bf05-8329ed83b123\",\n                        \"body\": \"Happy trees.\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get By Id - Include Adoptions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aacAdoptionService}}/{{apiVersion}}/persons/2?includeAdoptions=true",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"persons",
+										"2"
+									],
+									"query": [
+										{
+											"key": "includeAdoptions",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{aacAdoptionService}}/{{apiVersion}}/persons/2?includeAdoptions=true",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"{{apiVersion}}",
+												"persons",
+												"2"
+											],
+											"query": [
+												{
+													"key": "includeAdoptions",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:26:10 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:26:10.198030079\",\n    \"momentOfGratitude\": \"Do something today that your future self will thank you for. — Sean Patrick Flanery\",\n    \"data\": {\n        \"person\": {\n            \"id\": 2,\n            \"uuid\": \"7a8250fd-4191-4af5-9d90-62d1c8d2700f\",\n            \"dateJoined\": \"2024-01-01\",\n            \"name\": {\n                \"id\": 2,\n                \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                \"entityType\": \"PERSON\",\n                \"firstNamePreferred\": \"Bob\",\n                \"firstName\": \"Robert\",\n                \"middleName\": \"The Painter\",\n                \"lastName\": \"Ross\",\n                \"archived\": false\n            },\n            \"phoneNumbers\": [\n                {\n                    \"id\": 2,\n                    \"uuid\": \"feffb4bc-1192-47fc-a38c-a3273bfd5baf\",\n                    \"countryCode\": 1,\n                    \"areaCode\": 212,\n                    \"number\": 5551234,\n                    \"extension\": null,\n                    \"archived\": false,\n                    \"type\": \"MOBILE\"\n                }\n            ],\n            \"notes\": [\n                {\n                    \"id\": 6,\n                    \"uuid\": \"0c4ce1e8-3aa2-47bc-a014-ed3d128c1d87\",\n                    \"body\": \"Likes to paint.\"\n                },\n                {\n                    \"id\": 4,\n                    \"uuid\": \"04ade4a4-6bd1-4f84-a337-9fa04f80a45c\",\n                    \"body\": \"The man. The myth. The legend.\"\n                },\n                {\n                    \"id\": 5,\n                    \"uuid\": \"f0277340-23aa-43f3-bf05-8329ed83b123\",\n                    \"body\": \"Happy trees.\"\n                }\n            ]\n        },\n        \"adoptionCount\": 2,\n        \"adoptions\": [\n            {\n                \"id\": 2,\n                \"uuid\": \"149b7295-aeea-4c2f-a700-a2765278590e\",\n                \"dateOfAdoption\": \"2028-01-02\",\n                \"notes\": [\n                    {\n                        \"id\": 13,\n                        \"uuid\": \"79aa8032-19c6-4708-a7b3-af19114ef268\",\n                        \"body\": \"Veternarian consulted with adopters about best care practices.\"\n                    },\n                    {\n                        \"id\": 14,\n                        \"uuid\": \"fedcd28b-078c-4e2d-a0db-36842c6d2ae6\",\n                        \"body\": \"Adopters seemed cool.\"\n                    }\n                ],\n                \"persons\": [\n                    {\n                        \"id\": 1,\n                        \"uuid\": \"eb3c088e-a396-4da8-ab21-bc087e334703\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 1,\n                            \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"698d0e3d-0be2-4c62-a95f-470b2c8f741e\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"864b9b2a-1c2c-4060-8dde-2a1a452eebc0\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            },\n                            {\n                                \"id\": 3,\n                                \"uuid\": \"51642e26-5d51-4804-941f-2bc4d03463b9\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"ea1a22f8-c64b-4f19-807c-eadcacecf632\",\n                                \"body\": \"Happy trees.\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 2,\n                        \"uuid\": \"7a8250fd-4191-4af5-9d90-62d1c8d2700f\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 2,\n                            \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"feffb4bc-1192-47fc-a38c-a3273bfd5baf\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 6,\n                                \"uuid\": \"0c4ce1e8-3aa2-47bc-a014-ed3d128c1d87\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 4,\n                                \"uuid\": \"04ade4a4-6bd1-4f84-a337-9fa04f80a45c\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            },\n                            {\n                                \"id\": 5,\n                                \"uuid\": \"f0277340-23aa-43f3-bf05-8329ed83b123\",\n                                \"body\": \"Happy trees.\"\n                            }\n                        ]\n                    }\n                ],\n                \"pet\": {\n                    \"id\": 1,\n                    \"petType\": \"DOG\",\n                    \"petSize\": \"XL\",\n                    \"breed\": \"Great Dane\",\n                    \"dateOfBirth\": \"2015-01-01\",\n                    \"dateOfIntake\": \"2024-05-03\",\n                    \"name\": {\n                        \"id\": 3,\n                        \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                        \"entityType\": \"PET\",\n                        \"firstNamePreferred\": \"Good Boy\",\n                        \"firstName\": \"Marmaduke\",\n                        \"middleName\": null,\n                        \"lastName\": \"Smith\",\n                        \"archived\": false\n                    },\n                    \"notes\": [\n                        {\n                            \"id\": 8,\n                            \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                            \"body\": \"Likes cheese.\"\n                        },\n                        {\n                            \"id\": 7,\n                            \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                            \"body\": \"Is a good boy.\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"id\": 1,\n                \"uuid\": \"52f22359-9806-431a-affa-700c656a5917\",\n                \"dateOfAdoption\": \"2028-01-02\",\n                \"notes\": [\n                    {\n                        \"id\": 12,\n                        \"uuid\": \"6f1998f2-237d-466c-9c23-3ec633518d94\",\n                        \"body\": \"Veternarian consulted with adopters about best care practices.\"\n                    },\n                    {\n                        \"id\": 11,\n                        \"uuid\": \"4efdf45d-4498-43c2-bc1f-da7dfbc86814\",\n                        \"body\": \"Adopters seemed cool.\"\n                    }\n                ],\n                \"persons\": [\n                    {\n                        \"id\": 1,\n                        \"uuid\": \"eb3c088e-a396-4da8-ab21-bc087e334703\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 1,\n                            \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"698d0e3d-0be2-4c62-a95f-470b2c8f741e\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"864b9b2a-1c2c-4060-8dde-2a1a452eebc0\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            },\n                            {\n                                \"id\": 3,\n                                \"uuid\": \"51642e26-5d51-4804-941f-2bc4d03463b9\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"ea1a22f8-c64b-4f19-807c-eadcacecf632\",\n                                \"body\": \"Happy trees.\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 2,\n                        \"uuid\": \"7a8250fd-4191-4af5-9d90-62d1c8d2700f\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 2,\n                            \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"feffb4bc-1192-47fc-a38c-a3273bfd5baf\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 6,\n                                \"uuid\": \"0c4ce1e8-3aa2-47bc-a014-ed3d128c1d87\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 4,\n                                \"uuid\": \"04ade4a4-6bd1-4f84-a337-9fa04f80a45c\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            },\n                            {\n                                \"id\": 5,\n                                \"uuid\": \"f0277340-23aa-43f3-bf05-8329ed83b123\",\n                                \"body\": \"Happy trees.\"\n                            }\n                        ]\n                    }\n                ],\n                \"pet\": {\n                    \"id\": 1,\n                    \"petType\": \"DOG\",\n                    \"petSize\": \"XL\",\n                    \"breed\": \"Great Dane\",\n                    \"dateOfBirth\": \"2015-01-01\",\n                    \"dateOfIntake\": \"2024-05-03\",\n                    \"name\": {\n                        \"id\": 3,\n                        \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                        \"entityType\": \"PET\",\n                        \"firstNamePreferred\": \"Good Boy\",\n                        \"firstName\": \"Marmaduke\",\n                        \"middleName\": null,\n                        \"lastName\": \"Smith\",\n                        \"archived\": false\n                    },\n                    \"notes\": [\n                        {\n                            \"id\": 8,\n                            \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                            \"body\": \"Likes cheese.\"\n                        },\n                        {\n                            \"id\": 7,\n                            \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                            \"body\": \"Is a good boy.\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -194,7 +683,219 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"type\": \"DOG\",\n    \"size\": \"XL\",\n    \"breed\": \"Great Dane\",\n    \"name\" : {\n        \"firstName\": \"Marmaduke\",\n        \"lastName\": \"Smith\",\n        \"firstNamePreferred\": \"Good Boy\"\n    },\n    \"dateOfBirth\": \"2015-01-01\",\n    \"notes\": [\n        {\n            \"body\": \"Is a good boy.\"\n        },\n        {\n            \"body\": \"Likes cheese.\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{aacAdoptionService}}/api/v1/pets/create",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"pets",
+												"create"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/pets/1"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:21:16 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:21:16.021230064\",\n    \"momentOfGratitude\": \"A grateful mind is a great mind which eventually attracts to itself great things. — Plato\",\n    \"data\": {\n        \"pet\": {\n            \"id\": 1,\n            \"petType\": \"DOG\",\n            \"petSize\": \"XL\",\n            \"breed\": \"Great Dane\",\n            \"dateOfBirth\": \"2015-01-01\",\n            \"dateOfIntake\": \"2024-05-03\",\n            \"name\": {\n                \"id\": 3,\n                \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                \"entityType\": \"PET\",\n                \"firstNamePreferred\": \"Good Boy\",\n                \"firstName\": \"Marmaduke\",\n                \"middleName\": null,\n                \"lastName\": \"Smith\",\n                \"archived\": false\n            },\n            \"notes\": [\n                {\n                    \"id\": 7,\n                    \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                    \"body\": \"Is a good boy.\"\n                },\n                {\n                    \"id\": 8,\n                    \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                    \"body\": \"Likes cheese.\"\n                }\n            ]\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get All Pets",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aacAdoptionService}}/{{apiVersion}}/pets",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"pets"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{aacAdoptionService}}/{{apiVersion}}/pets",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"{{apiVersion}}",
+												"pets"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:21:32 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:21:32.75042223\",\n    \"momentOfGratitude\": \"However vast the darkness, we must supply it with our own light. — Stanley Kubrick\",\n    \"data\": {\n        \"count\": 2,\n        \"pets\": [\n            {\n                \"id\": 1,\n                \"petType\": \"DOG\",\n                \"petSize\": \"XL\",\n                \"breed\": \"Great Dane\",\n                \"dateOfBirth\": \"2015-01-01\",\n                \"dateOfIntake\": \"2024-05-03\",\n                \"name\": {\n                    \"id\": 3,\n                    \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                    \"entityType\": \"PET\",\n                    \"firstNamePreferred\": \"Good Boy\",\n                    \"firstName\": \"Marmaduke\",\n                    \"middleName\": null,\n                    \"lastName\": \"Smith\",\n                    \"archived\": false\n                },\n                \"notes\": [\n                    {\n                        \"id\": 7,\n                        \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                        \"body\": \"Is a good boy.\"\n                    },\n                    {\n                        \"id\": 8,\n                        \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                        \"body\": \"Likes cheese.\"\n                    }\n                ]\n            },\n            {\n                \"id\": 2,\n                \"petType\": \"DOG\",\n                \"petSize\": \"XL\",\n                \"breed\": \"Great Dane\",\n                \"dateOfBirth\": \"2015-01-01\",\n                \"dateOfIntake\": \"2024-05-03\",\n                \"name\": {\n                    \"id\": 4,\n                    \"uuid\": \"670967dc-c37b-42cf-bf9e-a9a19634da33\",\n                    \"entityType\": \"PET\",\n                    \"firstNamePreferred\": \"Good Boy\",\n                    \"firstName\": \"Marmaduke\",\n                    \"middleName\": null,\n                    \"lastName\": \"Smith\",\n                    \"archived\": false\n                },\n                \"notes\": [\n                    {\n                        \"id\": 9,\n                        \"uuid\": \"af47cb25-c6e6-4139-8102-2e1b55f3615c\",\n                        \"body\": \"Likes cheese.\"\n                    },\n                    {\n                        \"id\": 10,\n                        \"uuid\": \"c6180093-c40c-4310-989f-f5288cedea08\",\n                        \"body\": \"Is a good boy.\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get by ID - i",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aacAdoptionService}}/{{apiVersion}}/pets/1?includeAdoptions=true",
+									"host": [
+										"{{aacAdoptionService}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"pets",
+										"1"
+									],
+									"query": [
+										{
+											"key": "includeAdoptions",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{aacAdoptionService}}/{{apiVersion}}/pets/1?includeAdoptions=true",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"{{apiVersion}}",
+												"pets",
+												"1"
+											],
+											"query": [
+												{
+													"key": "includeAdoptions",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:26:57 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:26:57.686448523\",\n    \"momentOfGratitude\": \"Reflect upon your present blessings, of which every man has many - not on your past misfortunes, of which all men have some. - Charles Dickens\",\n    \"data\": {\n        \"pet\": {\n            \"id\": 1,\n            \"petType\": \"DOG\",\n            \"petSize\": \"XL\",\n            \"breed\": \"Great Dane\",\n            \"dateOfBirth\": \"2015-01-01\",\n            \"dateOfIntake\": \"2024-05-03\",\n            \"name\": {\n                \"id\": 3,\n                \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                \"entityType\": \"PET\",\n                \"firstNamePreferred\": \"Good Boy\",\n                \"firstName\": \"Marmaduke\",\n                \"middleName\": null,\n                \"lastName\": \"Smith\",\n                \"archived\": false\n            },\n            \"notes\": [\n                {\n                    \"id\": 8,\n                    \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                    \"body\": \"Likes cheese.\"\n                },\n                {\n                    \"id\": 7,\n                    \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                    \"body\": \"Is a good boy.\"\n                }\n            ]\n        },\n        \"adoptionCount\": 2,\n        \"adoptions\": [\n            {\n                \"id\": 2,\n                \"uuid\": \"149b7295-aeea-4c2f-a700-a2765278590e\",\n                \"dateOfAdoption\": \"2028-01-02\",\n                \"notes\": [\n                    {\n                        \"id\": 14,\n                        \"uuid\": \"fedcd28b-078c-4e2d-a0db-36842c6d2ae6\",\n                        \"body\": \"Adopters seemed cool.\"\n                    },\n                    {\n                        \"id\": 13,\n                        \"uuid\": \"79aa8032-19c6-4708-a7b3-af19114ef268\",\n                        \"body\": \"Veternarian consulted with adopters about best care practices.\"\n                    }\n                ],\n                \"persons\": [\n                    {\n                        \"id\": 2,\n                        \"uuid\": \"7a8250fd-4191-4af5-9d90-62d1c8d2700f\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 2,\n                            \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"feffb4bc-1192-47fc-a38c-a3273bfd5baf\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 6,\n                                \"uuid\": \"0c4ce1e8-3aa2-47bc-a014-ed3d128c1d87\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 4,\n                                \"uuid\": \"04ade4a4-6bd1-4f84-a337-9fa04f80a45c\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            },\n                            {\n                                \"id\": 5,\n                                \"uuid\": \"f0277340-23aa-43f3-bf05-8329ed83b123\",\n                                \"body\": \"Happy trees.\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 1,\n                        \"uuid\": \"eb3c088e-a396-4da8-ab21-bc087e334703\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 1,\n                            \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"698d0e3d-0be2-4c62-a95f-470b2c8f741e\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 3,\n                                \"uuid\": \"51642e26-5d51-4804-941f-2bc4d03463b9\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"ea1a22f8-c64b-4f19-807c-eadcacecf632\",\n                                \"body\": \"Happy trees.\"\n                            },\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"864b9b2a-1c2c-4060-8dde-2a1a452eebc0\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            }\n                        ]\n                    }\n                ],\n                \"pet\": {\n                    \"id\": 1,\n                    \"petType\": \"DOG\",\n                    \"petSize\": \"XL\",\n                    \"breed\": \"Great Dane\",\n                    \"dateOfBirth\": \"2015-01-01\",\n                    \"dateOfIntake\": \"2024-05-03\",\n                    \"name\": {\n                        \"id\": 3,\n                        \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                        \"entityType\": \"PET\",\n                        \"firstNamePreferred\": \"Good Boy\",\n                        \"firstName\": \"Marmaduke\",\n                        \"middleName\": null,\n                        \"lastName\": \"Smith\",\n                        \"archived\": false\n                    },\n                    \"notes\": [\n                        {\n                            \"id\": 8,\n                            \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                            \"body\": \"Likes cheese.\"\n                        },\n                        {\n                            \"id\": 7,\n                            \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                            \"body\": \"Is a good boy.\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"id\": 1,\n                \"uuid\": \"52f22359-9806-431a-affa-700c656a5917\",\n                \"dateOfAdoption\": \"2028-01-02\",\n                \"notes\": [\n                    {\n                        \"id\": 12,\n                        \"uuid\": \"6f1998f2-237d-466c-9c23-3ec633518d94\",\n                        \"body\": \"Veternarian consulted with adopters about best care practices.\"\n                    },\n                    {\n                        \"id\": 11,\n                        \"uuid\": \"4efdf45d-4498-43c2-bc1f-da7dfbc86814\",\n                        \"body\": \"Adopters seemed cool.\"\n                    }\n                ],\n                \"persons\": [\n                    {\n                        \"id\": 2,\n                        \"uuid\": \"7a8250fd-4191-4af5-9d90-62d1c8d2700f\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 2,\n                            \"uuid\": \"22fd908f-c096-4edb-ac6c-5ff4c1ee8a5a\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"feffb4bc-1192-47fc-a38c-a3273bfd5baf\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 6,\n                                \"uuid\": \"0c4ce1e8-3aa2-47bc-a014-ed3d128c1d87\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 4,\n                                \"uuid\": \"04ade4a4-6bd1-4f84-a337-9fa04f80a45c\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            },\n                            {\n                                \"id\": 5,\n                                \"uuid\": \"f0277340-23aa-43f3-bf05-8329ed83b123\",\n                                \"body\": \"Happy trees.\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 1,\n                        \"uuid\": \"eb3c088e-a396-4da8-ab21-bc087e334703\",\n                        \"dateJoined\": \"2024-01-01\",\n                        \"name\": {\n                            \"id\": 1,\n                            \"uuid\": \"6952cb2e-4f8e-4618-9a81-8897340f5284\",\n                            \"entityType\": \"PERSON\",\n                            \"firstNamePreferred\": \"Bob\",\n                            \"firstName\": \"Robert\",\n                            \"middleName\": \"The Painter\",\n                            \"lastName\": \"Ross\",\n                            \"archived\": false\n                        },\n                        \"phoneNumbers\": [\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"698d0e3d-0be2-4c62-a95f-470b2c8f741e\",\n                                \"countryCode\": 1,\n                                \"areaCode\": 212,\n                                \"number\": 5551234,\n                                \"extension\": null,\n                                \"archived\": false,\n                                \"type\": \"MOBILE\"\n                            }\n                        ],\n                        \"notes\": [\n                            {\n                                \"id\": 3,\n                                \"uuid\": \"51642e26-5d51-4804-941f-2bc4d03463b9\",\n                                \"body\": \"Likes to paint.\"\n                            },\n                            {\n                                \"id\": 2,\n                                \"uuid\": \"ea1a22f8-c64b-4f19-807c-eadcacecf632\",\n                                \"body\": \"Happy trees.\"\n                            },\n                            {\n                                \"id\": 1,\n                                \"uuid\": \"864b9b2a-1c2c-4060-8dde-2a1a452eebc0\",\n                                \"body\": \"The man. The myth. The legend.\"\n                            }\n                        ]\n                    }\n                ],\n                \"pet\": {\n                    \"id\": 1,\n                    \"petType\": \"DOG\",\n                    \"petSize\": \"XL\",\n                    \"breed\": \"Great Dane\",\n                    \"dateOfBirth\": \"2015-01-01\",\n                    \"dateOfIntake\": \"2024-05-03\",\n                    \"name\": {\n                        \"id\": 3,\n                        \"uuid\": \"2768334e-be55-48a3-8dfd-5fd00fe2e348\",\n                        \"entityType\": \"PET\",\n                        \"firstNamePreferred\": \"Good Boy\",\n                        \"firstName\": \"Marmaduke\",\n                        \"middleName\": null,\n                        \"lastName\": \"Smith\",\n                        \"archived\": false\n                    },\n                    \"notes\": [\n                        {\n                            \"id\": 8,\n                            \"uuid\": \"ac636c30-2134-4278-a3dd-a2494c362bdd\",\n                            \"body\": \"Likes cheese.\"\n                        },\n                        {\n                            \"id\": 7,\n                            \"uuid\": \"2a83b747-1a0b-4fe3-9dd9-cd624a977dc3\",\n                            \"body\": \"Is a good boy.\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -227,7 +928,66 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"countryCode\": 1,\n    \"areaCode\": 212,\n    \"number\": 5551234,\n    \"extension\": 123,\n    \"type\": \"WORK\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{aacAdoptionService}}/{{apiVersion}}/phonenumbers/create",
+											"host": [
+												"{{aacAdoptionService}}"
+											],
+											"path": [
+												"{{apiVersion}}",
+												"phonenumbers",
+												"create"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/phoneNumbers/52"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 04 May 2024 05:27:13 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiVersion\": \"V1\",\n    \"responseAt\": \"2024-05-03T22:27:13.911468447\",\n    \"momentOfGratitude\": \"A grateful mind is a great mind which eventually attracts to itself great things. — Plato\",\n    \"data\": {\n        \"phoneNumber\": {\n            \"id\": 52,\n            \"uuid\": \"6c105e64-300f-4414-aec2-202ddfeba972\",\n            \"countryCode\": 1,\n            \"areaCode\": 212,\n            \"number\": 5551234,\n            \"extension\": 123,\n            \"archived\": false,\n            \"type\": \"WORK\"\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				}

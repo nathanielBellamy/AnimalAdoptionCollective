@@ -7,6 +7,6 @@ import java.util.List;
 
 public class AdoptionGetAllResponse extends AdoptionResponse {
   public AdoptionGetAllResponse(List<Adoption> adoptions) {
-    this.setData(new AdoptionGetAllDto(adoptions));
+    this.setData(new AdoptionGetAllDto(adoptions.size(), adoptions));
   }
 }

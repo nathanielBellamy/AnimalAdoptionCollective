@@ -1,6 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.note.receive.NoteCreateDto;
@@ -60,7 +61,7 @@ public class Person {
   @JsonManagedReference
   private Set<Note> notes;
 
-  @ManyToMany(mappedBy = "persons")
+  @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
       name = "adoption_to_person",
       joinColumns = @JoinColumn(name = "adoption_id"),
@@ -68,6 +69,7 @@ public class Person {
   )
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonManagedReference
+  @JsonIgnore
   private Set<Adoption> adoptions;
 
   public Person() {}
@@ -111,10 +113,23 @@ public class Person {
   }
 
   public List<Note> getNotes() {
-    return Optional.ofNullable(notes).orElse(Collections.emptySet()).stream().toList();
+    return Optional
+        .ofNullable(notes)
+        .orElse(Collections.emptySet())
+        .stream()
+        .toList();
   }
 
   public List<Adoption> getAdoptions() {
-    return adoptions.stream().toList();
+    return Optional
+        .ofNullable(adoptions)
+        .orElse(Collections.emptySet())
+        .stream()
+        .toList();
+  }
+
+  public Adoption addAdoption(Adoption adoption) {
+    this.adoptions.add(adoption);
+    return adoption;
   }
 }
