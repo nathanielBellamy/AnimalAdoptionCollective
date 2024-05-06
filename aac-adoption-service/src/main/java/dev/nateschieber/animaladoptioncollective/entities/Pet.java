@@ -26,6 +26,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Entity
@@ -36,6 +37,7 @@ public class Pet {
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id;
 
+  private UUID uuid;
   private PetType petType;
   private PetSize petSize;
   private String breed;
@@ -66,6 +68,7 @@ public class Pet {
   public Pet() {}
 
   public Pet(PetCreateDto dto) {
+    this.uuid = UUID.randomUUID();
     this.petType = dto.type();
     this.petSize = dto.size();
     this.breed = dto.breed();
