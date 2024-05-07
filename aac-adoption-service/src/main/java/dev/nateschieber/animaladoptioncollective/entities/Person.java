@@ -43,7 +43,7 @@ public class Person {
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
-      name = "person_to_phoneNumber",
+      name = "phone_number_to_person",
       joinColumns = @JoinColumn(name = "phoneNumber_id"),
       inverseJoinColumns = @JoinColumn(name = "person_id")
   )
