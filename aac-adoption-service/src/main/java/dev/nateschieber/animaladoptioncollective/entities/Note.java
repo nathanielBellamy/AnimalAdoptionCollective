@@ -47,7 +47,7 @@ public class Note {
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonBackReference
   @JsonIgnore
-  private Set<Person> persons;
+  public Set<Person> persons;
 
   public Long getId() {
     return id;

@@ -9,7 +9,6 @@ import dev.nateschieber.animaladoptioncollective.enums.PetSize;
 import dev.nateschieber.animaladoptioncollective.enums.PetType;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.note.receive.NoteCreateDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.pet.receive.PetCreateDto;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -44,21 +43,21 @@ public class Pet {
   private LocalDate dateOfBirth;
   private LocalDate dateOfIntake;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name="name_id", referencedColumnName="id")
   private Name name;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
       name = "note_to_pet",
-      joinColumns = @JoinColumn(name = "note_id"),
-      inverseJoinColumns = @JoinColumn(name = "pet_id")
+      joinColumns = @JoinColumn(name = "pet_id"),
+      inverseJoinColumns = @JoinColumn(name = "note_id")
   )
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonManagedReference
   private Set<Note> notes;
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToMany(fetch = FetchType.EAGER)
   @JoinColumn(name="adoption_id", referencedColumnName="id")
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonManagedReference

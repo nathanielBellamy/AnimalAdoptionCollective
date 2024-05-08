@@ -37,15 +37,15 @@ public class Person {
   private UUID uuid;
   private LocalDate dateJoined;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name="name_id", referencedColumnName="id")
   private Name name;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
       name = "phone_number_to_person",
-      joinColumns = @JoinColumn(name = "phoneNumber_id"),
-      inverseJoinColumns = @JoinColumn(name = "person_id")
+      joinColumns = @JoinColumn(name = "person_id"),
+      inverseJoinColumns = @JoinColumn(name = "phone_number_id")
   )
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonManagedReference
@@ -54,8 +54,8 @@ public class Person {
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
       name = "note_to_person",
-      joinColumns = @JoinColumn(name = "note_id"),
-      inverseJoinColumns = @JoinColumn(name = "person_id")
+      joinColumns = @JoinColumn(name = "person_id"),
+      inverseJoinColumns = @JoinColumn(name = "note_id")
   )
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonManagedReference
@@ -64,8 +64,8 @@ public class Person {
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
       name = "adoption_to_person",
-      joinColumns = @JoinColumn(name = "adoption_id"),
-      inverseJoinColumns = @JoinColumn(name = "person_id")
+      joinColumns = @JoinColumn(name = "person_id"),
+      inverseJoinColumns = @JoinColumn(name = "adoption_id")
   )
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   @JsonManagedReference
