@@ -1,9 +1,10 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
+import dev.nateschieber.animaladoptioncollective.daos.PetDao;
+import dev.nateschieber.animaladoptioncollective.daos.interfaces.IPetDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.Name;
 import dev.nateschieber.animaladoptioncollective.entities.Pet;
 import dev.nateschieber.animaladoptioncollective.enums.EntityType;
-import dev.nateschieber.animaladoptioncollective.repositories.PetRepository;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.pet.receive.PetCreateDto;
 import java.util.List;
 import java.util.Optional;
@@ -13,30 +14,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class PetService {
 
-  private final PetRepository petRepository;
+  private final IPetDataAccessor petDao;
   private final NameService nameService;
   private final NoteService noteService;
 
   @Autowired
   public PetService(
-      PetRepository petRepository,
+      PetDao petDao,
       NameService nameService,
       NoteService noteService) {
-    this.petRepository = petRepository;
+    this.petDao = petDao.runtime;
     this.nameService = nameService;
     this.noteService = noteService;
   }
 
   public List<Pet> findAll() {
-    return petRepository.findAll();
+    return petDao.findAll();
   }
 
   public Optional<Pet> findById(Long id) {
-    return petRepository.findById(id);
+    return petDao.findById(id);
   }
 
   public Pet save(Pet pet) {
-    return petRepository.save(pet);
+    return petDao.save(pet);
   }
 
   public Pet createFromDto(PetCreateDto dto) {
@@ -48,6 +49,6 @@ public class PetService {
 
     noteService.saveAll(pet.getNotes());
 
-    return petRepository.save(pet);
+    return petDao.save(pet);
   }
 }
