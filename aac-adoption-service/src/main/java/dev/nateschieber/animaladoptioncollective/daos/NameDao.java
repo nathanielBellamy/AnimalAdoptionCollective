@@ -1,6 +1,6 @@
 package dev.nateschieber.animaladoptioncollective.daos;
 
-import dev.nateschieber.animaladoptioncollective.daoInterfaces.INameDataAccessor;
+import dev.nateschieber.animaladoptioncollective.daos.interfaces.INameDataAccessor;
 import dev.nateschieber.animaladoptioncollective.enums.DataAccess;
 import dev.nateschieber.animaladoptioncollective.inMemoryStores.NameInMemoryStore;
 import dev.nateschieber.animaladoptioncollective.repositories.NameRepository;

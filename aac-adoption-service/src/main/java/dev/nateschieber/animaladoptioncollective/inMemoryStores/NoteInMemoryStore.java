@@ -1,7 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.inMemoryStores;
 
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.IAdoptionDataAccessor;
-import dev.nateschieber.animaladoptioncollective.entities.Adoption;
+import dev.nateschieber.animaladoptioncollective.daos.interfaces.INoteDataAccessor;
+import dev.nateschieber.animaladoptioncollective.entities.Note;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -13,25 +13,24 @@ import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AdoptionInMemoryStore implements IAdoptionDataAccessor {
-
+public class NoteInMemoryStore implements INoteDataAccessor {
   @Override
   public void flush() {
 
   }
 
   @Override
-  public <S extends Adoption> S saveAndFlush(S entity) {
+  public <S extends Note> S saveAndFlush(S entity) {
     return null;
   }
 
   @Override
-  public <S extends Adoption> List<S> saveAllAndFlush(Iterable<S> entities) {
+  public <S extends Note> List<S> saveAllAndFlush(Iterable<S> entities) {
     return List.of();
   }
 
   @Override
-  public void deleteAllInBatch(Iterable<Adoption> entities) {
+  public void deleteAllInBatch(Iterable<Note> entities) {
 
   }
 
@@ -46,67 +45,67 @@ public class AdoptionInMemoryStore implements IAdoptionDataAccessor {
   }
 
   @Override
-  public Adoption getOne(Long aLong) {
+  public Note getOne(Long aLong) {
     return null;
   }
 
   @Override
-  public Adoption getById(Long aLong) {
+  public Note getById(Long aLong) {
     return null;
   }
 
   @Override
-  public Adoption getReferenceById(Long aLong) {
+  public Note getReferenceById(Long aLong) {
     return null;
   }
 
   @Override
-  public <S extends Adoption> Optional<S> findOne(Example<S> example) {
+  public <S extends Note> Optional<S> findOne(Example<S> example) {
     return Optional.empty();
   }
 
   @Override
-  public <S extends Adoption> List<S> findAll(Example<S> example) {
+  public <S extends Note> List<S> findAll(Example<S> example) {
     return List.of();
   }
 
   @Override
-  public <S extends Adoption> List<S> findAll(Example<S> example, Sort sort) {
+  public <S extends Note> List<S> findAll(Example<S> example, Sort sort) {
     return List.of();
   }
 
   @Override
-  public <S extends Adoption> Page<S> findAll(Example<S> example, Pageable pageable) {
+  public <S extends Note> Page<S> findAll(Example<S> example, Pageable pageable) {
     return null;
   }
 
   @Override
-  public <S extends Adoption> long count(Example<S> example) {
+  public <S extends Note> long count(Example<S> example) {
     return 0;
   }
 
   @Override
-  public <S extends Adoption> boolean exists(Example<S> example) {
+  public <S extends Note> boolean exists(Example<S> example) {
     return false;
   }
 
   @Override
-  public <S extends Adoption, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+  public <S extends Note, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
     return null;
   }
 
   @Override
-  public <S extends Adoption> S save(S entity) {
+  public <S extends Note> S save(S entity) {
     return null;
   }
 
   @Override
-  public <S extends Adoption> List<S> saveAll(Iterable<S> entities) {
+  public <S extends Note> List<S> saveAll(Iterable<S> entities) {
     return List.of();
   }
 
   @Override
-  public Optional<Adoption> findById(Long aLong) {
+  public Optional<Note> findById(Long aLong) {
     return Optional.empty();
   }
 
@@ -116,12 +115,12 @@ public class AdoptionInMemoryStore implements IAdoptionDataAccessor {
   }
 
   @Override
-  public List<Adoption> findAll() {
+  public List<Note> findAll() {
     return List.of();
   }
 
   @Override
-  public List<Adoption> findAllById(Iterable<Long> longs) {
+  public List<Note> findAllById(Iterable<Long> longs) {
     return List.of();
   }
 
@@ -136,7 +135,7 @@ public class AdoptionInMemoryStore implements IAdoptionDataAccessor {
   }
 
   @Override
-  public void delete(Adoption entity) {
+  public void delete(Note entity) {
 
   }
 
@@ -146,7 +145,7 @@ public class AdoptionInMemoryStore implements IAdoptionDataAccessor {
   }
 
   @Override
-  public void deleteAll(Iterable<? extends Adoption> entities) {
+  public void deleteAll(Iterable<? extends Note> entities) {
 
   }
 
@@ -156,12 +155,12 @@ public class AdoptionInMemoryStore implements IAdoptionDataAccessor {
   }
 
   @Override
-  public List<Adoption> findAll(Sort sort) {
+  public List<Note> findAll(Sort sort) {
     return List.of();
   }
 
   @Override
-  public Page<Adoption> findAll(Pageable pageable) {
+  public Page<Note> findAll(Pageable pageable) {
     return null;
   }
 }

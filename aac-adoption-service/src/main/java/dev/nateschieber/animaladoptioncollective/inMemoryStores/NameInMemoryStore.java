@@ -1,6 +1,6 @@
 package dev.nateschieber.animaladoptioncollective.inMemoryStores;
 
-import dev.nateschieber.animaladoptioncollective.daoInterfaces.INameDataAccessor;
+import dev.nateschieber.animaladoptioncollective.daos.interfaces.INameDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.Name;
 import java.util.List;
 import java.util.Optional;
