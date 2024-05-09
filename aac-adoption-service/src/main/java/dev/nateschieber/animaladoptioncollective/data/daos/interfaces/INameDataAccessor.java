@@ -1,4 +1,4 @@
-package dev.nateschieber.animaladoptioncollective.daos.interfaces;
+package dev.nateschieber.animaladoptioncollective.data.daos.interfaces;
 
 import dev.nateschieber.animaladoptioncollective.entities.Name;
 import java.util.List;

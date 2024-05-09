@@ -1,7 +1,7 @@
-package dev.nateschieber.animaladoptioncollective.inMemoryStores;
+package dev.nateschieber.animaladoptioncollective.data.inMemoryStores;
 
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.IPersonDataAccessor;
-import dev.nateschieber.animaladoptioncollective.entities.Person;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.INoteDataAccessor;
+import dev.nateschieber.animaladoptioncollective.entities.Note;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -13,24 +13,24 @@ import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PersonInMemoryStore implements IPersonDataAccessor {
+public class NoteInMemoryStore implements INoteDataAccessor {
   @Override
   public void flush() {
 
   }
 
   @Override
-  public <S extends Person> S saveAndFlush(S entity) {
+  public <S extends Note> S saveAndFlush(S entity) {
     return null;
   }
 
   @Override
-  public <S extends Person> List<S> saveAllAndFlush(Iterable<S> entities) {
+  public <S extends Note> List<S> saveAllAndFlush(Iterable<S> entities) {
     return List.of();
   }
 
   @Override
-  public void deleteAllInBatch(Iterable<Person> entities) {
+  public void deleteAllInBatch(Iterable<Note> entities) {
 
   }
 
@@ -45,67 +45,67 @@ public class PersonInMemoryStore implements IPersonDataAccessor {
   }
 
   @Override
-  public Person getOne(Long aLong) {
+  public Note getOne(Long aLong) {
     return null;
   }
 
   @Override
-  public Person getById(Long aLong) {
+  public Note getById(Long aLong) {
     return null;
   }
 
   @Override
-  public Person getReferenceById(Long aLong) {
+  public Note getReferenceById(Long aLong) {
     return null;
   }
 
   @Override
-  public <S extends Person> Optional<S> findOne(Example<S> example) {
+  public <S extends Note> Optional<S> findOne(Example<S> example) {
     return Optional.empty();
   }
 
   @Override
-  public <S extends Person> List<S> findAll(Example<S> example) {
+  public <S extends Note> List<S> findAll(Example<S> example) {
     return List.of();
   }
 
   @Override
-  public <S extends Person> List<S> findAll(Example<S> example, Sort sort) {
+  public <S extends Note> List<S> findAll(Example<S> example, Sort sort) {
     return List.of();
   }
 
   @Override
-  public <S extends Person> Page<S> findAll(Example<S> example, Pageable pageable) {
+  public <S extends Note> Page<S> findAll(Example<S> example, Pageable pageable) {
     return null;
   }
 
   @Override
-  public <S extends Person> long count(Example<S> example) {
+  public <S extends Note> long count(Example<S> example) {
     return 0;
   }
 
   @Override
-  public <S extends Person> boolean exists(Example<S> example) {
+  public <S extends Note> boolean exists(Example<S> example) {
     return false;
   }
 
   @Override
-  public <S extends Person, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+  public <S extends Note, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
     return null;
   }
 
   @Override
-  public <S extends Person> S save(S entity) {
+  public <S extends Note> S save(S entity) {
     return null;
   }
 
   @Override
-  public <S extends Person> List<S> saveAll(Iterable<S> entities) {
+  public <S extends Note> List<S> saveAll(Iterable<S> entities) {
     return List.of();
   }
 
   @Override
-  public Optional<Person> findById(Long aLong) {
+  public Optional<Note> findById(Long aLong) {
     return Optional.empty();
   }
 
@@ -115,12 +115,12 @@ public class PersonInMemoryStore implements IPersonDataAccessor {
   }
 
   @Override
-  public List<Person> findAll() {
+  public List<Note> findAll() {
     return List.of();
   }
 
   @Override
-  public List<Person> findAllById(Iterable<Long> longs) {
+  public List<Note> findAllById(Iterable<Long> longs) {
     return List.of();
   }
 
@@ -135,7 +135,7 @@ public class PersonInMemoryStore implements IPersonDataAccessor {
   }
 
   @Override
-  public void delete(Person entity) {
+  public void delete(Note entity) {
 
   }
 
@@ -145,7 +145,7 @@ public class PersonInMemoryStore implements IPersonDataAccessor {
   }
 
   @Override
-  public void deleteAll(Iterable<? extends Person> entities) {
+  public void deleteAll(Iterable<? extends Note> entities) {
 
   }
 
@@ -155,12 +155,12 @@ public class PersonInMemoryStore implements IPersonDataAccessor {
   }
 
   @Override
-  public List<Person> findAll(Sort sort) {
+  public List<Note> findAll(Sort sort) {
     return List.of();
   }
 
   @Override
-  public Page<Person> findAll(Pageable pageable) {
+  public Page<Note> findAll(Pageable pageable) {
     return null;
   }
 }

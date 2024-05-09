@@ -1,9 +1,9 @@
-package dev.nateschieber.animaladoptioncollective.daos;
+package dev.nateschieber.animaladoptioncollective.data.daos;
 
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.IPhoneNumberDataAccessor;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.IPhoneNumberDataAccessor;
 import dev.nateschieber.animaladoptioncollective.enums.DataAccess;
-import dev.nateschieber.animaladoptioncollective.inMemoryStores.PhoneNumberInMemoryStore;
-import dev.nateschieber.animaladoptioncollective.repositories.PhoneNumberRepository;
+import dev.nateschieber.animaladoptioncollective.data.inMemoryStores.PhoneNumberInMemoryStore;
+import dev.nateschieber.animaladoptioncollective.data.repositories.PhoneNumberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

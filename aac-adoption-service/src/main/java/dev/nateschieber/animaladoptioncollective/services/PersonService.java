@@ -1,7 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
-import dev.nateschieber.animaladoptioncollective.daos.PersonDao;
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.IPersonDataAccessor;
+import dev.nateschieber.animaladoptioncollective.data.daos.PersonDao;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.IPersonDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.Name;
 import dev.nateschieber.animaladoptioncollective.entities.Person;
 import dev.nateschieber.animaladoptioncollective.enums.EntityType;

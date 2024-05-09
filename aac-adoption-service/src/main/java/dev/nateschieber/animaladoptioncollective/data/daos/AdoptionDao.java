@@ -1,9 +1,9 @@
-package dev.nateschieber.animaladoptioncollective.daos;
+package dev.nateschieber.animaladoptioncollective.data.daos;
 
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.IAdoptionDataAccessor;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.IAdoptionDataAccessor;
 import dev.nateschieber.animaladoptioncollective.enums.DataAccess;
-import dev.nateschieber.animaladoptioncollective.inMemoryStores.AdoptionInMemoryStore;
-import dev.nateschieber.animaladoptioncollective.repositories.AdoptionRepository;
+import dev.nateschieber.animaladoptioncollective.data.inMemoryStores.AdoptionInMemoryStore;
+import dev.nateschieber.animaladoptioncollective.data.repositories.AdoptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

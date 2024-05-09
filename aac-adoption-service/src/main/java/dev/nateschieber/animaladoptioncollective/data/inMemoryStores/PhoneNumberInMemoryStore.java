@@ -1,6 +1,6 @@
-package dev.nateschieber.animaladoptioncollective.inMemoryStores;
+package dev.nateschieber.animaladoptioncollective.data.inMemoryStores;
 
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.IPhoneNumberDataAccessor;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.IPhoneNumberDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.PhoneNumber;
 import java.util.List;
 import java.util.Optional;

@@ -1,13 +1,8 @@
 package dev.nateschieber.animaladoptioncollective.rest.clients;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import dev.nateschieber.animaladoptioncollective.events.AacEvent;
 import dev.nateschieber.animaladoptioncollective.events.adoption.AdoptionCreateEvent;
 import dev.nateschieber.animaladoptioncollective.util.AacAdoptionSerializer;
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;

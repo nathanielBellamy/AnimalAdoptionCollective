@@ -1,7 +1,7 @@
-package dev.nateschieber.animaladoptioncollective.inMemoryStores;
+package dev.nateschieber.animaladoptioncollective.data.inMemoryStores;
 
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.IPetDataAccessor;
-import dev.nateschieber.animaladoptioncollective.entities.Pet;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.INameDataAccessor;
+import dev.nateschieber.animaladoptioncollective.entities.Name;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -13,24 +13,24 @@ import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PetInMemoryStore implements IPetDataAccessor {
+public class NameInMemoryStore implements INameDataAccessor{
   @Override
   public void flush() {
 
   }
 
   @Override
-  public <S extends Pet> S saveAndFlush(S entity) {
+  public <S extends Name> S saveAndFlush(S entity) {
     return null;
   }
 
   @Override
-  public <S extends Pet> List<S> saveAllAndFlush(Iterable<S> entities) {
+  public <S extends Name> List<S> saveAllAndFlush(Iterable<S> entities) {
     return List.of();
   }
 
   @Override
-  public void deleteAllInBatch(Iterable<Pet> entities) {
+  public void deleteAllInBatch(Iterable<Name> entities) {
 
   }
 
@@ -45,67 +45,67 @@ public class PetInMemoryStore implements IPetDataAccessor {
   }
 
   @Override
-  public Pet getOne(Long aLong) {
+  public Name getOne(Long aLong) {
     return null;
   }
 
   @Override
-  public Pet getById(Long aLong) {
+  public Name getById(Long aLong) {
     return null;
   }
 
   @Override
-  public Pet getReferenceById(Long aLong) {
+  public Name getReferenceById(Long aLong) {
     return null;
   }
 
   @Override
-  public <S extends Pet> Optional<S> findOne(Example<S> example) {
+  public <S extends Name> Optional<S> findOne(Example<S> example) {
     return Optional.empty();
   }
 
   @Override
-  public <S extends Pet> List<S> findAll(Example<S> example) {
+  public <S extends Name> List<S> findAll(Example<S> example) {
     return List.of();
   }
 
   @Override
-  public <S extends Pet> List<S> findAll(Example<S> example, Sort sort) {
+  public <S extends Name> List<S> findAll(Example<S> example, Sort sort) {
     return List.of();
   }
 
   @Override
-  public <S extends Pet> Page<S> findAll(Example<S> example, Pageable pageable) {
+  public <S extends Name> Page<S> findAll(Example<S> example, Pageable pageable) {
     return null;
   }
 
   @Override
-  public <S extends Pet> long count(Example<S> example) {
+  public <S extends Name> long count(Example<S> example) {
     return 0;
   }
 
   @Override
-  public <S extends Pet> boolean exists(Example<S> example) {
+  public <S extends Name> boolean exists(Example<S> example) {
     return false;
   }
 
   @Override
-  public <S extends Pet, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+  public <S extends Name, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
     return null;
   }
 
   @Override
-  public <S extends Pet> S save(S entity) {
+  public <S extends Name> S save(S entity) {
     return null;
   }
 
   @Override
-  public <S extends Pet> List<S> saveAll(Iterable<S> entities) {
+  public <S extends Name> List<S> saveAll(Iterable<S> entities) {
     return List.of();
   }
 
   @Override
-  public Optional<Pet> findById(Long aLong) {
+  public Optional<Name> findById(Long aLong) {
     return Optional.empty();
   }
 
@@ -115,12 +115,12 @@ public class PetInMemoryStore implements IPetDataAccessor {
   }
 
   @Override
-  public List<Pet> findAll() {
+  public List<Name> findAll() {
     return List.of();
   }
 
   @Override
-  public List<Pet> findAllById(Iterable<Long> longs) {
+  public List<Name> findAllById(Iterable<Long> longs) {
     return List.of();
   }
 
@@ -135,7 +135,7 @@ public class PetInMemoryStore implements IPetDataAccessor {
   }
 
   @Override
-  public void delete(Pet entity) {
+  public void delete(Name entity) {
 
   }
 
@@ -145,7 +145,7 @@ public class PetInMemoryStore implements IPetDataAccessor {
   }
 
   @Override
-  public void deleteAll(Iterable<? extends Pet> entities) {
+  public void deleteAll(Iterable<? extends Name> entities) {
 
   }
 
@@ -155,12 +155,12 @@ public class PetInMemoryStore implements IPetDataAccessor {
   }
 
   @Override
-  public List<Pet> findAll(Sort sort) {
+  public List<Name> findAll(Sort sort) {
     return List.of();
   }
 
   @Override
-  public Page<Pet> findAll(Pageable pageable) {
+  public Page<Name> findAll(Pageable pageable) {
     return null;
   }
 }

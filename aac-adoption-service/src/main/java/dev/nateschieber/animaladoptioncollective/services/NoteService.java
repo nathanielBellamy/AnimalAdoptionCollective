@@ -1,7 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
-import dev.nateschieber.animaladoptioncollective.daos.NoteDao;
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.INoteDataAccessor;
+import dev.nateschieber.animaladoptioncollective.data.daos.NoteDao;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.INoteDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.Note;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.note.receive.NoteCreateDto;
 import java.util.List;

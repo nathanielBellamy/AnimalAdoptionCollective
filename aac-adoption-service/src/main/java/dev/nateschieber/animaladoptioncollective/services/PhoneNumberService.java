@@ -1,7 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
-import dev.nateschieber.animaladoptioncollective.daos.PhoneNumberDao;
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.IPhoneNumberDataAccessor;
+import dev.nateschieber.animaladoptioncollective.data.daos.PhoneNumberDao;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.IPhoneNumberDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.PhoneNumber;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.phoneNumber.receive.PhoneNumberCreateDto;
 import org.springframework.beans.factory.annotation.Autowired;

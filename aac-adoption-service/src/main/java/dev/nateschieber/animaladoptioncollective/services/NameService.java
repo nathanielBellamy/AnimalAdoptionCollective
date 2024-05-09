@@ -1,7 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.INameDataAccessor;
-import dev.nateschieber.animaladoptioncollective.daos.NameDao;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.INameDataAccessor;
+import dev.nateschieber.animaladoptioncollective.data.daos.NameDao;
 import dev.nateschieber.animaladoptioncollective.entities.Name;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.name.receive.NameCreateDto;
 import java.util.List;

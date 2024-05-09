@@ -1,6 +1,6 @@
-package dev.nateschieber.animaladoptioncollective.repositories;
+package dev.nateschieber.animaladoptioncollective.data.repositories;
 
-import dev.nateschieber.animaladoptioncollective.daos.interfaces.INameDataAccessor;
+import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.INameDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.Name;
 import org.springframework.data.jpa.repository.JpaRepository;
 
