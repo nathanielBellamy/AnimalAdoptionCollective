@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import dev.nateschieber.animaladoptioncollective.enums.PhoneNumberType;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.phoneNumber.receive.PhoneNumberCreateDto;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,6 +31,7 @@ public class PhoneNumber {
   private Integer number;
   private Integer extension;
   private boolean archived = false;
+  @Enumerated(EnumType.STRING)
   private PhoneNumberType type;
 
 

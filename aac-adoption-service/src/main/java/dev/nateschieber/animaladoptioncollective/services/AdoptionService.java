@@ -1,16 +1,15 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
+import dev.nateschieber.animaladoptioncollective.daos.AdoptionDao;
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import dev.nateschieber.animaladoptioncollective.entities.Note;
 import dev.nateschieber.animaladoptioncollective.entities.Person;
 import dev.nateschieber.animaladoptioncollective.entities.Pet;
 import dev.nateschieber.animaladoptioncollective.events.adoption.AdoptionCreateEvent;
-import dev.nateschieber.animaladoptioncollective.repositories.AdoptionRepository;
 import dev.nateschieber.animaladoptioncollective.rest.clients.EventClient;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.receive.AdoptionCreateDto;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdoptionService {
 
-  private final AdoptionRepository adoptionRepository;
+  private final AdoptionDao adoptionDao;
   private final NoteService noteService;
   private final PersonService personService;
   private final PetService petService;
@@ -26,12 +25,12 @@ public class AdoptionService {
 
   @Autowired
   public AdoptionService(
-      AdoptionRepository adoptionRepository,
+      AdoptionDao adoptionDao,
       NoteService noteService,
       PersonService personService,
       PetService petService,
       EventClient eventClient) {
-    this.adoptionRepository = adoptionRepository;
+    this.adoptionDao = adoptionDao;
     this.noteService = noteService;
     this.personService = personService;
     this.petService = petService;
@@ -39,15 +38,15 @@ public class AdoptionService {
   }
 
   public List<Adoption> findAll() {
-    return this.adoptionRepository.findAll();
+    return this.adoptionDao.exec.findAll();
   }
 
   public Optional<Adoption> findById(Long id) {
-    return this.adoptionRepository.findById(id);
+    return this.adoptionDao.exec.findById(id);
   }
 
   public Adoption save(Adoption adoption) {
-    Adoption savedAdoption = this.adoptionRepository.save(adoption);
+    Adoption savedAdoption = this.adoptionDao.exec.save(adoption);
 
     AdoptionCreateEvent event = new AdoptionCreateEvent(savedAdoption);
     this.eventClient.postEvent(event);
@@ -74,7 +73,7 @@ public class AdoptionService {
       List<Note> notes = adoption.getNotes();
       noteService.saveAll(notes);
 
-      Adoption adoptionSaved = adoptionRepository.save(adoption);
+      Adoption adoptionSaved = adoptionDao.exec.save(adoption);
 
       persons.forEach(p -> p.addAdoption(adoption));
       personService.saveAll(persons);
@@ -86,6 +85,6 @@ public class AdoptionService {
   }
 
   public void printRepo() {
-    System.out.println(adoptionRepository);
+    System.out.println(adoptionDao);
   }
 }

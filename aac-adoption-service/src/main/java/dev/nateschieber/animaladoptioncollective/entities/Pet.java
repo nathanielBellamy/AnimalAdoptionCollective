@@ -10,6 +10,8 @@ import dev.nateschieber.animaladoptioncollective.enums.PetType;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.note.receive.NoteCreateDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.pet.receive.PetCreateDto;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,7 +39,9 @@ public class Pet {
   private Long id;
 
   private UUID uuid;
+  @Enumerated(EnumType.STRING)
   private PetType petType;
+  @Enumerated(EnumType.STRING)
   private PetSize petSize;
   private String breed;
   private LocalDate dateOfBirth;

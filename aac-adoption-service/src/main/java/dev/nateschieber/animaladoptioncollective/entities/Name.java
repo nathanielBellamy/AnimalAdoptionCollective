@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.nateschieber.animaladoptioncollective.enums.EntityType;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.name.receive.NameCreateDto;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,8 +13,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.UUID;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Entity
 @Table(name = "names")
@@ -22,6 +22,7 @@ public class Name {
   private Long id;
 
   private UUID uuid;
+  @Enumerated(EnumType.STRING)
   private EntityType entityType;
   private String firstNamePreferred;
   private String firstName;
