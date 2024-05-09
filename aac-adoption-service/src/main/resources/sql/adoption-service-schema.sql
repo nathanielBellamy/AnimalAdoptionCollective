@@ -1,5 +1,6 @@
 -- AnimalAdoptionCollective
 
+-- TODO: debug findAll after running this - something about adoption_id doesn't exist on things where adoption_id shouldn't matter
 
 -- set current_user
 set ROLE admin;

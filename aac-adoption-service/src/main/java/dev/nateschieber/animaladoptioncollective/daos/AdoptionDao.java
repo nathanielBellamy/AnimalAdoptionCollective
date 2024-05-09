@@ -1,7 +1,6 @@
 package dev.nateschieber.animaladoptioncollective.daos;
 
 import dev.nateschieber.animaladoptioncollective.daoInterfaces.IAdoptionDataAccessor;
-import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import dev.nateschieber.animaladoptioncollective.enums.DataAccess;
 import dev.nateschieber.animaladoptioncollective.inMemoryStores.AdoptionInMemoryStore;
 import dev.nateschieber.animaladoptioncollective.repositories.AdoptionRepository;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AdoptionDao {
 
-  public IAdoptionDataAccessor exec = null;
+  public IAdoptionDataAccessor runtime;
 
   @Autowired
   public AdoptionDao(
@@ -23,8 +22,8 @@ public class AdoptionDao {
     System.out.println(dataAccess);
 
     switch(dataAccess) {
-     case DataAccess.JPA -> exec = adoptionRepository;
-     case DataAccess.IN_MEMORY -> exec = adoptionInMemoryStore;
+     case DataAccess.JPA -> runtime = adoptionRepository;
+     case DataAccess.IN_MEMORY -> runtime = adoptionInMemoryStore;
     }
   }
 }

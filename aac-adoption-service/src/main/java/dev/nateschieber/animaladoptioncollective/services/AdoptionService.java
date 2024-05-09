@@ -1,5 +1,6 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
+import dev.nateschieber.animaladoptioncollective.daoInterfaces.IAdoptionDataAccessor;
 import dev.nateschieber.animaladoptioncollective.daos.AdoptionDao;
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import dev.nateschieber.animaladoptioncollective.entities.Note;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdoptionService {
 
-  private final AdoptionDao adoptionDao;
+  private final IAdoptionDataAccessor adoptionDao;
   private final NoteService noteService;
   private final PersonService personService;
   private final PetService petService;
@@ -30,7 +31,7 @@ public class AdoptionService {
       PersonService personService,
       PetService petService,
       EventClient eventClient) {
-    this.adoptionDao = adoptionDao;
+    this.adoptionDao = adoptionDao.runtime;
     this.noteService = noteService;
     this.personService = personService;
     this.petService = petService;
@@ -38,15 +39,15 @@ public class AdoptionService {
   }
 
   public List<Adoption> findAll() {
-    return this.adoptionDao.exec.findAll();
+    return this.adoptionDao.findAll();
   }
 
   public Optional<Adoption> findById(Long id) {
-    return this.adoptionDao.exec.findById(id);
+    return this.adoptionDao.findById(id);
   }
 
   public Adoption save(Adoption adoption) {
-    Adoption savedAdoption = this.adoptionDao.exec.save(adoption);
+    Adoption savedAdoption = this.adoptionDao.save(adoption);
 
     AdoptionCreateEvent event = new AdoptionCreateEvent(savedAdoption);
     this.eventClient.postEvent(event);
@@ -73,7 +74,7 @@ public class AdoptionService {
       List<Note> notes = adoption.getNotes();
       noteService.saveAll(notes);
 
-      Adoption adoptionSaved = adoptionDao.exec.save(adoption);
+      Adoption adoptionSaved = adoptionDao.save(adoption);
 
       persons.forEach(p -> p.addAdoption(adoption));
       personService.saveAll(persons);
