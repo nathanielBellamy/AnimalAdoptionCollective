@@ -1,10 +1,10 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
+import dev.nateschieber.animaladoptioncollective.daos.PersonDao;
+import dev.nateschieber.animaladoptioncollective.daos.interfaces.IPersonDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.Name;
 import dev.nateschieber.animaladoptioncollective.entities.Person;
-import dev.nateschieber.animaladoptioncollective.entities.PhoneNumber;
 import dev.nateschieber.animaladoptioncollective.enums.EntityType;
-import dev.nateschieber.animaladoptioncollective.repositories.PersonRepository;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.person.receive.PersonCreateDto;
 import java.util.List;
 import java.util.Optional;
@@ -14,41 +14,41 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonService {
 
-  private final PersonRepository personRepository;
+  private final IPersonDataAccessor personDao;
   private final NameService nameService;
   private final NoteService noteService;
   private final PhoneNumberService phoneNumberService;
 
   @Autowired
   public PersonService(
-      PersonRepository personRepository,
+      PersonDao personDao,
       NameService nameService,
       NoteService noteService,
       PhoneNumberService phoneNumberService) {
-    this.personRepository = personRepository;
+    this.personDao = personDao.runtime;
     this.nameService = nameService;
     this.noteService = noteService;
     this.phoneNumberService = phoneNumberService;
   }
 
   public List<Person> findAll() {
-    return personRepository.findAll();
+    return personDao.findAll();
   }
 
   public Optional<Person> findById(Long id) {
-    return personRepository.findById(id);
+    return personDao.findById(id);
   }
 
   public List<Person> findAllById(List<Long> personIds) {
-    return personRepository.findAllById(personIds);
+    return personDao.findAllById(personIds);
   }
 
   public Person save(Person person) {
-    return personRepository.save(person);
+    return personDao.save(person);
   }
 
   public List<Person> saveAll(List<Person> persons) {
-    return personRepository.saveAll(persons);
+    return personDao.saveAll(persons);
   }
 
   public Person createFromDto(PersonCreateDto dto) {
@@ -66,6 +66,6 @@ public class PersonService {
       noteService.save(note);
     });
 
-    return personRepository.save(person);
+    return personDao.save(person);
   }
 }
