@@ -19,6 +19,7 @@ import java.util.UUID;
 public class Name {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @JsonIgnore
   private Long id;
 
   private UUID uuid;

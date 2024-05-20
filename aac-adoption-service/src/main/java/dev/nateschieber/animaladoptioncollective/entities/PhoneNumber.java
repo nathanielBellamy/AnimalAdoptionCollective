@@ -1,6 +1,7 @@
 package dev.nateschieber.animaladoptioncollective.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import dev.nateschieber.animaladoptioncollective.enums.PhoneNumberType;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.phoneNumber.receive.PhoneNumberCreateDto;
@@ -23,6 +24,7 @@ public class PhoneNumber {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @JsonIgnore
   private Long id;
 
   private UUID uuid;

@@ -1,7 +1,7 @@
-package dev.nateschieber.animaladoptioncollective.data.repositories;
+package dev.nateschieber.animaladoptioncollective.data.jpaRepositories;
 
 import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.IAdoptionDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AdoptionRepository extends JpaRepository<Adoption, Long>, IAdoptionDataAccessor { }
+public interface JpaAdoptionRepository extends JpaRepository<Adoption, Long>, IAdoptionDataAccessor { }

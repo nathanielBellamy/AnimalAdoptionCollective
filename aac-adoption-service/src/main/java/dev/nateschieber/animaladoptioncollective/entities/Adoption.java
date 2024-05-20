@@ -68,21 +68,16 @@ public class Adoption {
     return id;
   }
 
+  public void setId(long newId) {
+    id = newId;
+  }
+
   public UUID getUuid() {
     return uuid;
   }
 
   public LocalDate getDateOfAdoption() {
     return dateOfAdoption;
-  }
-
-  @Override
-  public String toString() {
-    return "Adoption{" +
-        "id=" + id +
-        ", uuid=" + uuid +
-        ", dateOfAdoption=" + dateOfAdoption +
-        '}';
   }
 
   public List<Note> getNotes() {
@@ -111,5 +106,17 @@ public class Adoption {
 
   public void setPersons(Set<Person> persons) {
     this.persons = persons;
+  }
+
+  @Override
+  public String toString() {
+    return "Adoption{\n" +
+        "id=" + id +
+        ", uuid=" + uuid +
+        ", dateOfAdoption=" + dateOfAdoption +
+        ", notes=" + notes +
+        ", persons=" + persons +
+        ", pet=" + pet +
+        "\n}";
   }
 }

@@ -19,6 +19,7 @@ public class Note {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @JsonIgnore
   private Long id;
 
   private UUID uuid;
@@ -71,5 +72,17 @@ public class Note {
 
   public Set<Person> getPersons() {
     return persons;
+  }
+
+  @Override
+  public String toString() {
+    return "Note{\n" +
+        "id=" + id +
+        ", uuid=" + uuid +
+        ", body='" + body + '\'' +
+        ", adoptions=" + adoptions +
+        ", pets=" + pets +
+        ", persons=" + persons +
+        "\n}";
   }
 }

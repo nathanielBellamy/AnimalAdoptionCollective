@@ -89,6 +89,10 @@ public class Pet {
     return id;
   }
 
+  public void setId(Long newId) {
+    id = newId;
+  }
+
   public PetType getPetType() {
     return petType;
   }
@@ -131,5 +135,21 @@ public class Pet {
 
   public void addAdoption(Adoption adoption) {
     this.adoptions.add(adoption);
+  }
+
+  @Override
+  public String toString() {
+    return "\n Pet{" +
+        "id=" + id +
+        "\n, uuid=" + uuid +
+        ", petType=" + petType +
+        ", petSize=" + petSize +
+        ", breed='" + breed + '\'' +
+        ", dateOfBirth=" + dateOfBirth +
+        ", dateOfIntake=" + dateOfIntake +
+        ", name=" + name +
+        ", notes=" + notes +
+        ", adoptions=" + adoptions +
+        "\n}";
   }
 }

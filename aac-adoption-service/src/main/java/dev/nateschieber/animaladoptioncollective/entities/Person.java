@@ -1,14 +1,11 @@
 package dev.nateschieber.animaladoptioncollective.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.note.receive.NoteCreateDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.person.receive.PersonCreateDto;
-import dev.nateschieber.animaladoptioncollective.rest.dtos.phoneNumber.PhoneNumberDto;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.phoneNumber.receive.PhoneNumberCreateDto;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -92,6 +89,10 @@ public class Person {
     this.notes = notes;
   }
 
+  public void setId(long newId) {
+    id = newId;
+  }
+
   public Long getId() {
     return id;
   }
@@ -131,5 +132,18 @@ public class Person {
   public Adoption addAdoption(Adoption adoption) {
     this.adoptions.add(adoption);
     return adoption;
+  }
+
+  @Override
+  public String toString() {
+    return "Person{\n" +
+        "id=" + id +
+        ", uuid=" + uuid +
+        ", dateJoined=" + dateJoined +
+        ", name=" + name +
+        ", phoneNumbers=" + phoneNumbers +
+        ", notes=" + notes +
+        ", adoptions=" + adoptions +
+        "\n}";
   }
 }
