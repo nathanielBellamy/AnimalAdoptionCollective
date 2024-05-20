@@ -2,12 +2,16 @@ package dev.nateschieber.animaladoptioncollective.services;
 
 import dev.nateschieber.animaladoptioncollective.data.daos.PersonDao;
 import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.IPersonDataAccessor;
+import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import dev.nateschieber.animaladoptioncollective.entities.Name;
+import dev.nateschieber.animaladoptioncollective.entities.Note;
 import dev.nateschieber.animaladoptioncollective.entities.Person;
+import dev.nateschieber.animaladoptioncollective.entities.PhoneNumber;
 import dev.nateschieber.animaladoptioncollective.enums.EntityType;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.person.receive.PersonCreateDto;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +48,15 @@ public class PersonService {
   }
 
   public Person save(Person person) {
+    Name name = person.getName();
+    nameService.save(name);
+
+    List<Note> notes = person.getNotes();
+    notes.forEach(note -> noteService.save(note));
+
+    List<PhoneNumber> phoneNumbers = person.getPhoneNumbers().stream().collect(Collectors.toList());
+    phoneNumbers.forEach(phoneNumber -> phoneNumberService.save(phoneNumber));
+
     return personDao.save(person);
   }
 

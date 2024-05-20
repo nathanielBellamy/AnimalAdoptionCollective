@@ -3,6 +3,7 @@ package dev.nateschieber.animaladoptioncollective.services;
 import dev.nateschieber.animaladoptioncollective.data.daos.PetDao;
 import dev.nateschieber.animaladoptioncollective.data.daos.interfaces.IPetDataAccessor;
 import dev.nateschieber.animaladoptioncollective.entities.Name;
+import dev.nateschieber.animaladoptioncollective.entities.Note;
 import dev.nateschieber.animaladoptioncollective.entities.Pet;
 import dev.nateschieber.animaladoptioncollective.enums.EntityType;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.pet.receive.PetCreateDto;
@@ -37,6 +38,11 @@ public class PetService {
   }
 
   public Pet save(Pet pet) {
+    Name name = pet.getName();
+    nameService.save(name);
+
+    List<Note> notes = pet.getNotes();
+    notes.forEach(note -> noteService.save(note));
     return petDao.save(pet);
   }
 

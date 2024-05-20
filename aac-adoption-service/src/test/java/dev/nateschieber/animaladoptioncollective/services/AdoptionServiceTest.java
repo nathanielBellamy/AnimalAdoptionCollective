@@ -1,12 +1,66 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import dev.nateschieber.animaladoptioncollective.entities.Adoption;
+import dev.nateschieber.animaladoptioncollective.entities.Person;
+import dev.nateschieber.animaladoptioncollective.entities.Pet;
+import dev.nateschieber.animaladoptioncollective.mockData.MockPersonFactory;
+import dev.nateschieber.animaladoptioncollective.mockData.MockPetFactory;
+import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.receive.AdoptionCreateDto;
+import dev.nateschieber.animaladoptioncollective.rest.dtos.note.receive.NoteCreateDto;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+@SpringBootTest
+@ActiveProfiles("test")
 public class AdoptionServiceTest {
 
-  // TODO:
-  // - debug issue where tests were unable to autenticate with postgres
-  // - incorrect password, even though it is correct in all config files we have checked
-  // - once debugged:
-  //   - create several Adoption entities in MockDB
-  //   - verify that the correct Adoption is retrieved based on @PathVariable
+  @Autowired
+  private PetService petService;
+  @Autowired
+  private PersonService personService;
+  @Autowired
+  private AdoptionService adoptionService;
+  @Autowired
+  private NameService nameService;
+  @Autowired
+  private PhoneNumberService phoneNumberService;
+  @Autowired
+  private NoteService noteService;
 
+  @Test
+  public void AdoptionService_createFromDto_returnsAdoption() throws Exception {
+    Pet mockPet = MockPetFactory.defaultPets().get(0);
+    Pet savedPet = petService.save(mockPet);
+
+    Person mockPerson = MockPersonFactory.defaultPersons().get(0);
+    Person savedPerson = personService.save(mockPerson);
+
+    Optional<Adoption> optAdoption = adoptionService.createFromDto(
+        new AdoptionCreateDto(
+            LocalDate.now(),
+            List.of(
+                new NoteCreateDto("foo bar")
+            ),
+            List.of(savedPerson.getId()),
+            savedPet.getId()
+        )
+    );
+
+    if (!optAdoption.isPresent()) {
+      throw new Exception("Failed to create adoption.");
+    }
+
+    Adoption adoption = optAdoption.get();
+
+    assertEquals(LocalDate.now(), adoption.getDateOfAdoption());
+    assertEquals(1l, adoption.getPersons().get(0).getId());
+    assertEquals(1l, adoption.getPet().getId());
+  }
 }

@@ -38,7 +38,7 @@ public class Person {
   @JoinColumn(name="name_id", referencedColumnName="id")
   private Name name;
 
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "phone_number_to_person",
       joinColumns = @JoinColumn(name = "person_id"),
@@ -48,7 +48,7 @@ public class Person {
   @JsonManagedReference
   private Set<PhoneNumber> phoneNumbers;
 
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "note_to_person",
       joinColumns = @JoinColumn(name = "person_id"),
@@ -58,7 +58,7 @@ public class Person {
   @JsonManagedReference
   private Set<Note> notes;
 
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "adoption_to_person",
       joinColumns = @JoinColumn(name = "person_id"),

@@ -51,7 +51,7 @@ public class Pet {
   @JoinColumn(name="name_id", referencedColumnName="id")
   private Name name;
 
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "note_to_pet",
       joinColumns = @JoinColumn(name = "pet_id"),
