@@ -109,8 +109,12 @@ public class Person {
     return name;
   }
 
-  public Set<PhoneNumber> getPhoneNumbers() {
-    return phoneNumbers;
+  public List<PhoneNumber> getPhoneNumbers() {
+    return Optional
+        .ofNullable(phoneNumbers)
+        .orElse(Collections.emptySet())
+        .stream()
+        .toList();
   }
 
   public List<Note> getNotes() {

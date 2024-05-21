@@ -15,30 +15,42 @@ public class MockPetFactory {
 
   public static List<Pet> defaultPets() {
 
-    List<Pet> mockPets = List.of(
-      new Pet( new PetCreateDto(
-          PetType.TURTLE,
-          PetSize.XL,
-          "Teenage Mutant Ninja",
-          new NameCreateDto(EntityType.PET, "Michelangelo", "", "", ""),
-          LocalDate.of(1985, 1, 1),
-          LocalDate.of(1990, 1, 1),
-          List.of(
-              new NoteCreateDto("Kowabunga")
-          )
-      )),
-      new Pet( new PetCreateDto(
-          PetType.DOG,
-          PetSize.XL,
-          "Big Red",
-          new NameCreateDto(EntityType.PET, "Clifford", "", "", ""),
-          LocalDate.of(1985, 1, 1),
-          LocalDate.of(1990, 1, 1),
-          List.of(
-              new NoteCreateDto("Is a good boy")
-          )
-      )),
-        new Pet( new PetCreateDto(
+    List<Pet> mockPets = MockPetFactory.defaultPetCreateDtos().stream().map(dto -> new Pet(dto)).toList();
+
+    return IntStream
+        .range(0, mockPets.size())
+        .mapToObj(i -> {
+          Pet pet = mockPets.get(i);
+          pet.setId(i + 1l);
+          return pet;
+        }).toList();
+  }
+
+  public static List<PetCreateDto> defaultPetCreateDtos() {
+    return List.of(
+        new PetCreateDto(
+            PetType.TURTLE,
+            PetSize.XL,
+            "Teenage Mutant Ninja",
+            new NameCreateDto(EntityType.PET, "Michelangelo", "", "", ""),
+            LocalDate.of(1985, 1, 1),
+            LocalDate.of(1990, 1, 1),
+            List.of(
+                new NoteCreateDto("Kowabunga")
+            )
+        ),
+        new PetCreateDto(
+            PetType.DOG,
+            PetSize.XL,
+            "Big Red",
+            new NameCreateDto(EntityType.PET, "Clifford", "", "", ""),
+            LocalDate.of(1985, 1, 1),
+            LocalDate.of(1990, 1, 1),
+            List.of(
+                new NoteCreateDto("Is a good boy")
+            )
+        ),
+        new PetCreateDto(
             PetType.CAT,
             PetSize.L,
             "Orange Tabby Persian",
@@ -48,15 +60,7 @@ public class MockPetFactory {
             List.of(
                 new NoteCreateDto("Likes lasagna")
             )
-        ))
+        )
     );
-
-    return IntStream
-        .range(0, mockPets.size())
-        .mapToObj(i -> {
-          Pet pet = mockPets.get(i);
-          pet.setId(i + 1l);
-          return pet;
-        }).toList();
   }
 }
