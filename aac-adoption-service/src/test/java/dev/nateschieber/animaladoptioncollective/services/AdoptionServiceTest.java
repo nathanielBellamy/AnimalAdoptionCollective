@@ -1,10 +1,12 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import dev.nateschieber.animaladoptioncollective.entities.Adoption;
 import dev.nateschieber.animaladoptioncollective.entities.Person;
 import dev.nateschieber.animaladoptioncollective.entities.Pet;
+import dev.nateschieber.animaladoptioncollective.matchers.AdoptionMatcher;
 import dev.nateschieber.animaladoptioncollective.mockData.MockPersonFactory;
 import dev.nateschieber.animaladoptioncollective.mockData.MockPetFactory;
 import dev.nateschieber.animaladoptioncollective.rest.dtos.adoption.receive.AdoptionCreateDto;
@@ -12,6 +14,7 @@ import dev.nateschieber.animaladoptioncollective.rest.dtos.note.receive.NoteCrea
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -59,8 +62,13 @@ public class AdoptionServiceTest {
 
     Adoption adoption = optAdoption.get();
 
-    assertEquals(LocalDate.now(), adoption.getDateOfAdoption());
-    assertEquals(1l, adoption.getPersons().get(0).getId());
-    assertEquals(1l, adoption.getPet().getId());
+    Optional<Adoption> optAdoptionFromDb = adoptionService.findById(adoption.getId());
+
+    if (!optAdoptionFromDb.isPresent()) {
+      throw new Exception("Failed to save adoption.");
+    }
+
+    Adoption adoptionFromDb = optAdoptionFromDb.get();
+    assertTrue(new AdoptionMatcher(adoption).matches(adoptionFromDb));
   }
 }

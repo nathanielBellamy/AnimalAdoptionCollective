@@ -76,9 +76,9 @@ public class AdoptionService {
 
       Adoption adoptionSaved = adoptionDao.save(adoption);
 
-      persons.forEach(p -> p.addAdoption(adoption));
+      persons.forEach(p -> p.addAdoption(adoptionSaved));
       personService.saveAll(persons);
-      pet.addAdoption(adoption);
+      pet.addAdoption(adoptionSaved);
       petService.save(pet);
 
       return Optional.of(adoptionSaved);
@@ -87,5 +87,9 @@ public class AdoptionService {
 
   public void printRepo() {
     System.out.println(adoptionDao);
+  }
+
+  public void deleteAll() {
+    adoptionDao.deleteAll();
   }
 }

@@ -1,11 +1,11 @@
 package dev.nateschieber.animaladoptioncollective.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import dev.nateschieber.animaladoptioncollective.entities.Pet;
-import dev.nateschieber.animaladoptioncollective.enums.PetSize;
-import dev.nateschieber.animaladoptioncollective.enums.PetType;
+import dev.nateschieber.animaladoptioncollective.matchers.PetMatcher;
 import dev.nateschieber.animaladoptioncollective.mockData.MockPetFactory;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,10 +26,12 @@ public class PetServiceTest {
         MockPetFactory.defaultPetCreateDtos().get(0)
     );
 
-    assertEquals("Michelangelo", pet.getName().getFirstName());
-    assertEquals(PetType.TURTLE, pet.getPetType());
-    assertEquals(PetSize.XL, pet.getPetSize());
-    assertEquals("Teenage Mutant Ninja", pet.getBreed());
-    assertEquals("Kowabunga", pet.getNotes().get(0).getBody());
+    Optional<Pet> optPet = petService.findById(pet.getId());
+    if (!optPet.isPresent()) {
+      throw new Exception("Did not save pet.");
+    }
+
+    Pet dbPet = optPet.get();
+    assertTrue(new PetMatcher(pet).matches(dbPet));
   }
 }

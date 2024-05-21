@@ -54,7 +54,7 @@ public class PhoneNumber {
     this.archived = Optional.ofNullable(dto.archived()).orElse(false);
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 

@@ -81,4 +81,8 @@ public class PersonService {
 
     return personDao.save(person);
   }
+
+  public void deleteAll() {
+    personDao.deleteAll();
+  }
 }

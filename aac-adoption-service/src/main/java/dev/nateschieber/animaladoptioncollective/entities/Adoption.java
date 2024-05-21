@@ -33,7 +33,7 @@ public class Adoption {
   private UUID uuid;
   private LocalDate dateOfAdoption;
 
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "note_to_adoption",
       joinColumns = @JoinColumn(name = "adoption_id"),
@@ -43,11 +43,11 @@ public class Adoption {
   @JsonManagedReference
   private Set<Note> notes;
 
-  @ManyToMany(mappedBy = "adoptions")
+  @ManyToMany(mappedBy = "adoptions", fetch = FetchType.EAGER)
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private Set<Person> persons;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private Pet pet;
 

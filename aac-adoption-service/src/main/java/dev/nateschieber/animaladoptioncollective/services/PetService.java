@@ -57,4 +57,8 @@ public class PetService {
 
     return petDao.save(pet);
   }
+
+  public void deleteAll() {
+    petDao.deleteAll();
+  }
 }
